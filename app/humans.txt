@@ -1,0 +1,19 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+    andrew ivaschenko -- front-end developer -- anivash.com
+    Барсуков Игорь Викторович   -- front-end developer -- maeglif@gmail.com
+    Гайнутдинова Анастасия Григорьевна  -- front-end developer -- asyagai@gmail.com
+    Ефимов Павел -- front-end developer -- flashfair@gmail.com
+    Кузеванов Владислав Геннадьевич -- front-end developer -- your.designer@yandex.ru   
+    <name> -- <role> -- <twitter>
+
+# THANKS
+    
+    <name>
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5,
+    Apache Server Configs, jQuery, Modernizr, Normalize.css
