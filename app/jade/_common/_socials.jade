@@ -1,0 +1,12 @@
+.socials
+	ul.socials_list
+		each item, index in ['РУС', 'ENG']
+			li.socials_list-item
+				a(href="#" class='socials_list-item-link ' + ((index == 1) ? 'active' : '' ))= item
+		
+	ul.lang_list
+		each item, index in ['fb', 'tw', 'vk']
+			li.lang_list-item
+				a(href="#" class='lang_list-item-link '+item +' '+ ((index == 1) ? 'active' : '' ))
+					//img(title=item, src='img/'+item+'.png', alt=item)
+					span.logo-hide=item
