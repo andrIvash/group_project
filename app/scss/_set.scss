@@ -1,42 +1,18 @@
 //_set.scss
 
 html, body {
-    height: 100%;
+    
     font: 1em/1.4;
 }
 
 .wrapper {
-   min-height: 100%;
-   height: auto !important;
-   height: 100%;
-   margin: 0 auto -70px;
-   position: relative;
+   
+   
 
 }
 
 
 
-/* sticky footer _____________________________________________________________*/
-
-.push {
-  height: 240px;
-}
-
-.footer-container {
- min-width: 1200px;
- margin: 0 auto;
- height: 70px;
- margin-top: 0px; 
-
-}
-
-.footer {
-  width: 1000px;
-  margin: 0 auto;
-  height: 100%;
- 
-
-}
 
 
 /* clear _____________________________________________________________________*/

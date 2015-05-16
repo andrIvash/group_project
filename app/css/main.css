@@ -112,30 +112,7 @@
   font-style: normal; }
 
 html, body {
-  height: 100%;
   font: 1em/1.4; }
-
-.wrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -70px;
-  position: relative; }
-
-/* sticky footer _____________________________________________________________*/
-.push {
-  height: 240px; }
-
-.footer-container {
-  min-width: 1200px;
-  margin: 0 auto;
-  height: 70px;
-  margin-top: 0px; }
-
-.footer {
-  width: 1000px;
-  margin: 0 auto;
-  height: 100%; }
 
 /* clear _____________________________________________________________________*/
 .clearfix:before,
@@ -159,10 +136,34 @@ html, body {
   text-shadow: none;
   color: transparent; }
 
+.footer {
+  position: absolute;
+  width: 960px;
+  height: auto;
+  top: 760px;
+  left: 0;
+  right: 0;
+  margin: auto; }
+
+.footer-logo {
+  font-family: "robotomedium";
+  font-size: 12px;
+  text-align: center;
+  color: #fff; }
+
 .main-container {
   min-width: 1200px;
-  margin: 0 auto; }
+  height: 800px;
+  position: relative;
+  background: url("../img/bg.jpg") no-repeat; }
 
 .main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   width: 960px;
-  margin: 0 auto; }
+  height: 670px;
+  background-color: #615c60; }

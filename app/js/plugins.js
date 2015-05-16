@@ -1,11 +1,10 @@
-
 (function($){
 
-	var saveScreen = (function(){
+	var SaveScreen = (function(){
 
 			// Подключаем прослушку событий
 			function _setUpListners(){
-				$('.save-button').on('click', _saveData)
+				$('.save-button').on('click', _saveData);
 				
 			}
 
@@ -26,13 +25,12 @@
 	            defObject.done(function(ans){
 	               	console.log('Изображение '+ans+' сохранено');
 	            })
-	                    
+	        } 
+
 			// Универсальная функция ajax
 			function _ajaxForm(data, url){
 
-				var data = form.serialize(),
-
-					defObj = $.ajax({
+				var defObj = $.ajax({
 						type : "POST",
 						url : url,
 						data: data
@@ -50,18 +48,18 @@
 				}
 			}
 
-
- $(document).ready(function() {
-
-	//saveScreen.init();
+	}());
 
 
+	$(document).ready(function(){
 
- })
+		SaveScreen.init();
+
+	})
+
+})(jQuery);    
 
 
 
-                   
 
-})(jQuery);
-            
+ 

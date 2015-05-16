@@ -1,18 +1,39 @@
 @import 'font';
-@import 'footer';
 @import 'set';
+@import 'footer';
+
+
+
+
 
 .main-container {
   
   min-width: 1200px;
-  margin: 0 auto;
+  height: 800px;
+  position: relative;
+  background: url('../img/bg.jpg') no-repeat;
   
-}
+  
+  
+  
+  
+ 
+    
+}  
 
 .main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   width: 960px;
-  margin: 0 auto;
+  height: 670px;
+  background-color: #615c60;
+  
+  
 }
-
+ 
 
 
