@@ -1,0 +1,63 @@
+//_set.scss
+
+html, body {
+    height: 100%;
+    font: 1em/1.4;
+}
+
+.wrapper {
+   min-height: 100%;
+   height: auto !important;
+   height: 100%;
+   margin: 0 auto -70px;
+   position: relative;
+
+}
+
+
+
+/* sticky footer _____________________________________________________________*/
+
+.push {
+  height: 240px;
+}
+
+.footer-container {
+ min-width: 1200px;
+ margin: 0 auto;
+ height: 70px;
+ margin-top: 0px; 
+
+}
+
+.footer {
+  width: 1000px;
+  margin: 0 auto;
+  height: 100%;
+ 
+
+}
+
+
+/* clear _____________________________________________________________________*/
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* hide links _____________________________________________________________________*/
+.text-hide {
+   text-indent: 100%;
+   white-space: nowrap;
+   overflow: hidden;
+}
+.logo-hide {
+   font: 0/0 serif;
+    text-shadow: none;
+    color: transparent;
+}

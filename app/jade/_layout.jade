@@ -27,8 +27,8 @@ head
 
 	<!-- build:css css/vendor.min.css -->
 	// bower:css
-	
-	// endbower
+	link(rel='stylesheet', href='bower/normalize.css/normalize.css')
+	// endbower 
 	<!-- endbuild -->
 	
 	<!-- build:css css/common.min.css -->
@@ -39,7 +39,9 @@ head
 	
 	<!-- build:js js/vendor.min.js -->
 	// bower:js
-	
+	script(src='bower/jquery/dist/jquery.js')
+	script(src='bower/html5shiv/dist/html5shiv.js')
+	script(src='bower/respond/dest/respond.src.js')
 	// endbower
 	<!-- endbuild -->
 
@@ -50,13 +52,20 @@ body
 
 	// Content: start
 	.wrapper
-		block header
-		block sidebar
-		block content
+		
+		.main-container
+			.main
+				block sidebar
+				block content
+
+
+		.push
+	// Content: end
 
 	// Footer: start
-	
+	.footer-container
 		block footer
+	
 	// Footer: end
 
 	// JS: start

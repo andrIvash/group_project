@@ -41,6 +41,16 @@ gulp.task('server', ['jade'], function () {
 	});
 });
 
+// check build
+gulp.task('server-dist', ['jade'], function () {
+	browserSync({
+		notify: false,
+		port: 9000,
+		proxy: 'http://localhost/groupwork/dist/index.html'
+	});
+});
+
+
 // sass
 gulp.task('sass', function() {
 	return gulp.src('./app/scss/*.scss')
@@ -140,4 +150,4 @@ gulp.task('clean', function () {
 		.pipe(clean());
 });
 
-gulp.task('build', ['html:build','php:build','js:build','img:build','font:build', 'extra:build']);
+gulp.task('build', ['clean','html:build','php:build','js:build','img:build','font:build', 'extra:build']);
