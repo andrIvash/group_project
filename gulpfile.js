@@ -35,9 +35,11 @@ gulp.task('wiredep', function () {
 // server
 gulp.task('server', ['jade'], function () {
 	browserSync({
-		notify: false,
-		port: 9000,
-		proxy: 'http://localhost/groupwork/app/index.html'
+        notify: false,
+        port: 9000,
+        server: {
+            baseDir: 'app'
+        }
 	});
 });
 

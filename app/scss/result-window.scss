@@ -1,0 +1,46 @@
+.result-window{
+  width: 700px;
+  height: 670px;
+  background-color: #615c60;
+
+  .result-window_wrapper {
+    width: 650px;
+    margin: 0 auto;
+
+    .result-window__title {
+      margin-bottom: 61px;
+      font-family: 'Segoe UI Light';
+      font-size: 36px;
+      color: #ffffff;
+    }
+    .result-window__body {
+      position: relative;
+      height: 533px;
+      background-color: #ffffff;
+      
+      .img{
+        display: block;
+        width: auto;
+        max-width: 100%;
+      }
+      .result-window__body__source{
+        height: 100%;
+        width: 100%;
+        position: relative;
+        .source__img{
+          position: absolute;
+          margin: auto;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+      }
+      .result-window__body__watermarks{
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}

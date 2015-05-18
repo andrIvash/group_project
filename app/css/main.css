@@ -200,6 +200,42 @@ html, body {
 .socials_list-item-link:hover {
   background: #efeded; }
 
+.result-window {
+  width: 700px;
+  height: 670px;
+  background-color: #615c60; }
+  .result-window .result-window_wrapper {
+    width: 650px;
+    margin: 0 auto; }
+    .result-window .result-window_wrapper .result-window__title {
+      margin-bottom: 61px;
+      font-family: 'Segoe UI Light';
+      font-size: 36px;
+      color: #ffffff; }
+    .result-window .result-window_wrapper .result-window__body {
+      position: relative;
+      height: 533px;
+      background-color: #ffffff; }
+      .result-window .result-window_wrapper .result-window__body .img {
+        display: block;
+        width: auto;
+        max-width: 100%; }
+      .result-window .result-window_wrapper .result-window__body .result-window__body__source {
+        height: 100%;
+        width: 100%;
+        position: relative; }
+        .result-window .result-window_wrapper .result-window__body .result-window__body__source .source__img {
+          position: absolute;
+          margin: auto;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0; }
+      .result-window .result-window_wrapper .result-window__body .result-window__body__watermarks {
+        position: absolute;
+        top: 0;
+        left: 0; }
+
 .main-container {
   min-width: 1200px;
   height: 800px;
