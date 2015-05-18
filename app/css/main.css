@@ -197,7 +197,7 @@ html, body {
 .lang_list-item-link.fb {
   background: #d4d2d1 url("../img/fb.png") no-repeat center center; }
 
-.socials_list-item-link:hover {
+.socials_list-item-link:hover, .socials_list-item-link.active {
   background: #efeded; }
 
 .result-window {
