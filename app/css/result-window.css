@@ -12,6 +12,7 @@
       color: #ffffff; }
     .result-window .result-window_wrapper .result-window__body {
       position: relative;
+      overflow: hidden;
       height: 533px;
       background-color: #ffffff; }
       .result-window .result-window_wrapper .result-window__body .img {
@@ -31,5 +32,15 @@
           right: 0; }
       .result-window .result-window_wrapper .result-window__body .result-window__body__watermarks {
         position: absolute;
+        width: 5000px;
+        height: 5000px;
         top: 0;
         left: 0; }
+        .result-window .result-window_wrapper .result-window__body .result-window__body__watermarks .watermark__row {
+          display: inline-block;
+          width: 100%; }
+          .result-window .result-window_wrapper .result-window__body .result-window__body__watermarks .watermark__row .watermark {
+            display: inline-block;
+            float: left;
+            vertical-align: top;
+            margin: 0; }
