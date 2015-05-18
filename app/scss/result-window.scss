@@ -18,11 +18,13 @@
       overflow: hidden;
       height: 533px;
       background-color: #ffffff;
+
       
       .img{
         display: block;
         width: auto;
         max-width: 100%;
+        max-height: 100%;
       }
       .result-window__body__source{
         height: 100%;
@@ -37,7 +39,7 @@
           right: 0;
         }
       }
-      .result-window__body__watermarks{
+      .result-window__body__watermarks{ 
         position: absolute;
         width: 5000px;
         height: 5000px;
