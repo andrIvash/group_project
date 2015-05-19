@@ -33,8 +33,6 @@
           right: 0; }
       .result-window .result-window_wrapper .result-window__body .result-window__body__watermarks {
         position: absolute;
-        width: 5000px;
-        height: 5000px;
         top: 0;
         left: 0; }
         .result-window .result-window_wrapper .result-window__body .result-window__body__watermarks .watermark__row {

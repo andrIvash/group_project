@@ -48,31 +48,89 @@
     <div class="wrapper">
       <div class="main-container">
         <div class="main">
-          <div class="block">block1 </div>
-          <div class="block">block2 </div>
-          <div class="block">block3 </div>
-          <div class="block result-window">
-            <div class="result-window_wrapper">
-              <div class="result-window__title">Генератор водяных знаков</div>
-              <div class="result-window__body">
-                <div class="result-window__body__source"><img src="img/example/original.png" class="source__img img"></div>
-                <div class="result-window__body__watermarks">
-                  <div class="watermark__row">
-                    <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                    <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                    <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                    <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
+          <aside class="sidebar">
+            <h3 class="sidebar-block-title">Настройки</h3>
+            <div class="block img-downloader module-suit">
+              <div class="form-wraper">
+                <form id="downloader" action="" name="img-downloader">
+                  <div class="wraper-input">
+                    <label for="upload-img" class="main-form-label">Исходное изображение</label>
+                    <input readonly="readonly" placeholder="Image.jpg" class="main-form-input">
+                    <input type="file" class="main-form-upload">
+                    <div class="upload-btn"></div>
                   </div>
-                  <div class="watermark__row">
-                    <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                    <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                    <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                    <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
+                  <div class="wraper-input">
+                    <label for="upload-watermark" class="main-form-label">Водяной знак</label>
+                    <input readonly="readonly" placeholder="Image.png" class="main-form-input">
+                    <input type="file" class="main-form-upload">
+                    <div class="upload-btn"></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="block positions module-suit">
+              <div class="form-warper">
+                <form id="positions" action="" name="positions">
+                  <div class="wraper-input position-title">
+                    <label for="position" class="main-form-label">Положение
+                      <div class="pos-trigger">
+                        <div class="trigger-btn tileon"></div>
+                        <div class="trigger-btn oneoff"></div>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="wraper-input">
+                    <div class="visual-nav">
+                      <div class="nav-field">
+                        <div class="nav-item"></div>
+                        <div class="nav-item"></div>
+                        <div class="nav-item"></div>
+                        <div class="nav-item"></div>
+                        <div class="nav-item"></div>
+                        <div class="nav-item"></div>
+                        <div class="nav-item"></div>
+                        <div class="nav-item"></div>
+                        <div class="nav-item"></div>
+                      </div>
+                    </div>
+                    <div class="namb-nav">
+                      <div class="namb-field">
+                        <div class="method meth-x">
+                          <input type="number" class="n-nav"> </div>
+                        <div class="method meth-y">
+                          <input type="number" class="n-nav"> </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="block">block3 </div>
+          </aside>
+          <section class="content">
+            <div class="block result-window">
+              <div class="result-window_wrapper">
+                <div class="result-window__title">Генератор водяных знаков</div>
+                <div class="result-window__body">
+                  <div class="result-window__body__source"><img src="img/example/original.png" class="source__img img"></div>
+                  <div class="result-window__body__watermarks">
+                    <div class="watermark__row">
+                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
+                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
+                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
+                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
+                    </div>
+                    <div class="watermark__row">
+                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
+                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
+                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
+                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         </div>
         <!-- Content: end-->
         <div class="socials">

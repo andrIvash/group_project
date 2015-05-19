@@ -1,0 +1,182 @@
+@import 'mainvars';
+
+.positions{
+	min-height: 188px;
+}
+.position-title{
+    margin-bottom:35px;
+}
+.pos-trigger{
+	position: absolute;
+    right: -2px;
+    bottom:0;
+    height:19px;
+    width: 40px;
+
+    @include clearfix;
+    
+    .trigger-btn{
+  		height:19px;
+    	width: 19px;
+    	background-image:url(../img/tileon-oneoff.png);
+    	background-repeat: no-repeat;
+    }
+	.tileon{
+		float: left;
+    	background-position: 0 100%;
+
+        &:hover{
+            background-position: 0 0;
+        }
+
+        &:active{
+            @include main-opacity(.5);
+        }
+
+	}
+	.oneoff{
+		float: right;
+		background-position:  100% 100%;
+
+        &:hover{
+            background-position: 100% 0;
+        }
+
+        &:active{
+            @include main-opacity(.5);
+        }
+	}
+}
+.visual-nav, .namb-nav{
+    width:50%;
+    min-height: 100%;
+    height: 100%;
+}
+.visual-nav{
+    float:left;
+}
+.namb-nav{
+    float:right;
+}
+
+.nav-field{
+    overflow: hidden;
+    width:101px;
+    height:101px;
+    border:solid 1px $d-grey;
+    background-color:$l-grey;
+    @include main-border-rad(4px);
+}
+.nav-item{
+    width:33px;
+    height:33px;
+    background-color:$l-grey;
+    border:solid 1px $d-grey;
+    border-left:none;
+    border-top:none;
+    float:left;
+    @include main-trans(.5s);
+
+    &:nth-child(3n){
+        border-right:none;
+    }
+    &:nth-child(7), &:nth-child(8), &:nth-child(9){
+        border-bottom:none;
+    }
+    &:hover{
+        background-color:$pink;
+        @include main-trans(.3s);
+    }
+    &:active{
+        background-color:$pink;
+    }
+
+}
+.numb-field{
+    width:101px;
+    height:101px;
+    overflow: hidden;
+    background-color: blue;
+}
+.method{
+    width:100%;
+    height:44px;
+    background-image:url(../img/method.png);
+    background-repeat: no-repeat;
+    margin-bottom:13px; 
+    position:relative;
+}
+.meth-x{
+    background-position: 50% 0;
+
+    // &:hover{
+    //     background-position: 50% 100%;
+    // }
+}
+.meth-y{
+    background-position: -280% 0;
+
+    //  &:hover{
+    //     background-position: -280% 100%;
+    // }
+}
+.n-nav{
+    padding-left:.3em;
+    position: relative;
+    width:44px;
+    height:44px;
+    border: solid 1px $d-grey;
+    @include main-border-rad(4px);
+    float:right;
+    opacity: 1;
+    margin-right:20px;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    background:#fff;
+    background-image:url(../img/arrows.png);
+    background-position: 0 0;
+    width: 20px;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    right: -22px;
+    bottom: 0;
+    z-index:200;
+
+    &:hover{
+        background-position: 100% 0;
+    }
+        
+}
+.arrows-wrap{
+    position: absolute;
+    right: -2px;
+    top:0;
+    height:46px;
+    width:20px;
+}
+.arrow-up,
+.arrow-down,{
+    width:20px;
+    height:23px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+
+    &:hover, &:active{
+         background-position: 0 0;
+         cursor:pointer;
+
+    }
+    &:active{
+        background-position: 0 100%;
+        cursor:pointer;
+    }
+}
+// .arrow-up{
+//     background-image:url(../img/arrow-up.png);
+// }
+// .arrow-down{
+//     background-image:url(../img/arrow-down.png);
+// }

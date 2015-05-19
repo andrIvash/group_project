@@ -1,0 +1,37 @@
+@import 'font';
+$dark: #2e3641;
+$l-grey: #dbe1e8;
+$d-grey: #9eb2c0;
+$pink: #f97e76;
+
+@mixin main-border-rad($rad){
+  border-radius: $rad;
+  -moz-border-radius:$rad;
+  -webkit-border-radius:$rad;
+  -khtml-border-radius:$rad;
+}
+
+@mixin clearfix {
+
+  &:after, &:before {
+    content: "";
+    display: table;
+	}
+
+  &:after{
+    clear: both;
+  }
+}
+
+@mixin main-opacity($value){
+  $IEValue: $value*100;
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+  filter: alpha(opacity=$IEValue);
+}
+@mixin main-trans($val){
+   -webkit-transition: $val;
+    -moz-transition: $val;
+    -o-transition: $val;
+   transition: $val;
+ }

@@ -1,0 +1,63 @@
+
+@import 'mainvars';
+
+.img-downloader{
+	min-height: 158px;
+}
+
+
+.form-wraper{
+	@include clearfix;
+
+}
+.wraper-input{
+	position:relative;
+	width:84.615%;
+	margin:0 auto 23px;
+	@inlude clearfix;
+}
+.main-form-label{
+	display:block;
+	font-family: 'robotolight';
+	font-size:.875em;
+	font-weight: normal;
+	color:$dark;
+	margin-bottom: 6px;
+}
+.main-form-input{
+
+	display: block;
+    max-width: 211px;
+    width:100%;
+    height:22px;
+    border: solid 1px $d-grey;
+    padding-left:9px;
+    color:$l-grey;
+    font-family: 'wf_SegoeUILight';
+    font-size:.750em;
+    @include main-border-rad(4px);
+    cursor: pointer;
+}
+.main-form-upload{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 26px;
+	z-index: 20;
+	@include main-opacity(0);
+	cursor: pointer;
+}
+.upload-btn{
+	position: absolute;
+    right: -2px;
+    bottom:0;
+    height:26px;
+    width: 40px;
+    background-color: $pink;
+    background-image: url(../img/download.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+}

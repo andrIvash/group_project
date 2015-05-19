@@ -1,1 +1,13 @@
-.block block1 
+.block.img-downloader.module-suit
+	.form-wraper
+		form#downloader(action="", name="img-downloader")
+			.wraper-input
+				label.main-form-label(for="upload-img") Исходное изображение
+				input.main-form-input(readonly="readonly", placeholder="Image.jpg")
+				input.main-form-upload(type="file")
+				.upload-btn
+			.wraper-input
+				label.main-form-label(for="upload-watermark") Водяной знак
+				input.main-form-input(readonly="readonly", placeholder="Image.png")
+				input.main-form-upload(type="file")
+				.upload-btn
