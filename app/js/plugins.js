@@ -5,7 +5,7 @@
 			// Подключаем прослушку событий
 			function _setUpListners(){
 				$('.save-button').on('click', _saveData);
-				
+
 			}
 
 			function _saveData(e) {
@@ -19,13 +19,13 @@
 	                data = canvas.toDataURL('image/png').replace(/data:image\/png;base64,/, ''),
 	                defObject = _ajaxForm(data, url);
 
-	            
+
 	            $('canvas').remove();
 
 	            defObject.done(function(ans){
 	               	console.log('Изображение '+ans+' сохранено');
 	            })
-	        } 
+	        }
 
 			// Универсальная функция ajax
 			function _ajaxForm(data, url){
@@ -40,7 +40,7 @@
 
 				return defObj;
 			}
-		
+
 		// Возвращаем в глобальную область видимости
 			return {
 				init: function () {
@@ -57,7 +57,7 @@
 
 	})
 
-})(jQuery);    
+})(jQuery);
 
 
 //Модуль загрузки изображений
@@ -74,8 +74,8 @@ var UplFileModul = (function($) {
         if($_bgInp.length === 0 || $_wtkInp.length === 0 || $_blBg.length === 0 || $_blWtk.length === 0){
             console.error('Ошибка инициализации плагина UplFileModul - переданные блоки не существуют!');
         }
-        
-        
+
+
         _addUplPlgn({
             'bg' : {
                 'name': 'background',
@@ -123,7 +123,7 @@ var UplFileModul = (function($) {
                     $.each(data.result.files, function (index, file) {
                         obj[key].blk.html('<img src="../app/php/files/'+file.name+'" alt="">');
                         _c(obj[key].name);
-                        
+
                         for (var prop in file) {
                             _newImg[obj[key].name][prop] = file[prop];
                         };
@@ -137,7 +137,7 @@ var UplFileModul = (function($) {
       };
 
     };
- 
+
     return {init : init};
 })(jQuery);
 
@@ -164,9 +164,12 @@ var WaterMarkDragAndDrop = (function(){
         _positionChanged = function(e){
             var posotions = $(this).data('target-position').split(',');
 
+            console.log($(this));
             _positioning(posotions[0], posotions[1], watermarkParent);
         },
         _positioning = function(horizontalAlign, verticalAlign, parent){
+
+
             watermark.position({
                 my: horizontalAlign + " " + verticalAlign,
                 at: horizontalAlign + " " + verticalAlign,
