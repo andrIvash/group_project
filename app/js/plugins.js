@@ -163,8 +163,6 @@ var WaterMarkDragAndDrop = (function(){
         },
         _positionChanged = function(e){
             var posotions = $(this).data('target-position').split(',');
-
-            console.log($(this));
             _positioning(posotions[0], posotions[1], watermarkParent);
         },
         _positioning = function(horizontalAlign, verticalAlign, parent){
