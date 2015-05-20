@@ -226,7 +226,7 @@ html, body {
       background-color: #ffffff; }
       .result-window .result-window_wrapper .result-window__body .img {
         display: block;
-        width: auto; }
+        width: 100%; }
       .result-window .result-window_wrapper .result-window__body .result-window__body__source {
         height: 100%;
         width: 100%;
@@ -716,9 +716,9 @@ input::-webkit-outer-spin-button {
 
 .main-container {
   min-width: 1200px;
-  height: 800px;
+  min-height: 800px;
   position: relative;
-  background: url("../img/bg.jpg") no-repeat; }
+  background: url("../img/bg-1.jpg") no-repeat; }
 
 .main {
   position: absolute;

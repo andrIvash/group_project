@@ -121,9 +121,18 @@ var UplFileModul = (function($) {
                 dataType: 'json',
                 done: function (e, data) {
                     $.each(data.result.files, function (index, file) {
-                        obj[key].blk.html('<img src="../app/php/files/'+file.name+'" alt="">');
+                        obj[key].blk.html('<img src="../app/php/files/'+file.name+'" alt="" >');
                         _c(obj[key].name);
+                        //----------------  добавление класов к картинкам
+                        if(key == 'bg') {
+                           $('#blBg img').addClass('img source__img');
+                        }
 
+                        if(key == 'wtk') {
+                           $('#blWtk img').addClass('img watermark');
+                        }
+
+                        //--------------------
                         for (var prop in file) {
                             _newImg[obj[key].name][prop] = file[prop];
                         };
