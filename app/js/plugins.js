@@ -140,3 +140,40 @@ var UplFileModul = (function($) {
  
     return {init : init};
 })(jQuery);
+
+
+//Модуль изменения положения watermark
+var WaterMarkDragAndDrop = (function(){
+    var watermark = $('#blWtk'),
+        watermarkParent = watermark.parent(),
+        init = function(){
+            _setUpListeners();
+        },
+        _setUpListeners = function(){
+            _positionChangedEventHandler();
+            _dragEventHandler();
+        },
+        _dragEventHandler = function(){
+            watermark.draggable();
+        },
+        _positionChangedEventHandler = function(){
+            $('#positions')
+                .find('.nav-item')
+                .on('click', _positionChanged);
+        },
+        _positionChanged = function(e){
+            var posotions = $(this).data('target-position').split(',');
+
+            _positioning(posotions[0], posotions[1], watermarkParent);
+        },
+        _positioning = function(horizontalAlign, verticalAlign, parent){
+            watermark.position({
+                my: horizontalAlign + " " + verticalAlign,
+                at: horizontalAlign + " " + verticalAlign,
+                of: parent
+            });
+        }
+    return {
+        Init: init
+    }
+})();
