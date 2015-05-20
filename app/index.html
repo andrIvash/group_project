@@ -36,6 +36,9 @@
     <script src="bower/respond/dest/respond.src.js"></script>
     <script src="bower/html2canvas/build/html2canvas.js"></script>
     <script src="bower/jquery-ui/jquery-ui.js"></script>
+    <script src="bower/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="bower/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+    <script src="bower/jquery-file-upload/js/jquery.fileupload.js"></script>
     <!-- endbower-->
     <!-- endbuild -->
   </head>
@@ -56,13 +59,13 @@
                   <div class="wraper-input">
                     <label for="upload-img" class="main-form-label">Исходное изображение</label>
                     <input readonly="readonly" placeholder="Image.jpg" class="main-form-input">
-                    <input type="file" class="main-form-upload">
+                    <input type="file" id="bgInp" name="files[]" data-url="../app/php/" class="main-form-upload">
                     <div class="upload-btn"></div>
                   </div>
                   <div class="wraper-input">
                     <label for="upload-watermark" class="main-form-label">Водяной знак</label>
                     <input readonly="readonly" placeholder="Image.png" class="main-form-input">
-                    <input type="file" class="main-form-upload">
+                    <input type="file" id="wtkInp" name="files[]" data-url="../app/php/" class="main-form-upload">
                     <div class="upload-btn"></div>
                   </div>
                 </form>
@@ -112,21 +115,8 @@
               <div class="result-window_wrapper">
                 <div class="result-window__title">Генератор водяных знаков</div>
                 <div class="result-window__body">
-                  <div class="result-window__body__source"><img src="img/example/original.png" class="source__img img"></div>
-                  <div class="result-window__body__watermarks">
-                    <div class="watermark__row">
-                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                    </div>
-                    <div class="watermark__row">
-                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                      <div class="watermark"><img src="img/example/watermark.png" class="watermark__img img"></div>
-                    </div>
-                  </div>
+                  <div id="blBg" class="result-window__body__source"> </div>
+                  <div id="blWtk" class="result-window__body__watermarks"> </div>
                 </div>
               </div>
             </div>
