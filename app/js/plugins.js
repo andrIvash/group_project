@@ -162,8 +162,15 @@ var WaterMarkDragAndDrop = (function(){
                 .on('click', _positionChanged);
         },
         _positionChanged = function(e){
-            var posotions = $(this).data('target-position').split(',');
-            _positioning(posotions[0], posotions[1], watermarkParent);
+            var $this = $(this);
+                positions = $this.data('target-position').split(',');
+
+            $('.nav-item').each(function( index ) {
+                $( this).removeClass('current');
+            });
+
+            $this.addClass('current');
+            _positioning(positions[0], positions[1], watermarkParent);
         },
         _positioning = function(horizontalAlign, verticalAlign, parent){
 

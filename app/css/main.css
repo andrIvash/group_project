@@ -618,6 +618,8 @@ html, body {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -khtml-border-radius: 4px; }
+  .nav-field .current {
+    background-color: #f97e76; }
 
 .nav-item {
   width: 33px;

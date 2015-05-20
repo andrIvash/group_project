@@ -66,6 +66,10 @@
     border:solid 1px $d-grey;
     background-color:$l-grey;
     @include main-border-rad(4px);
+
+  .current{
+    background-color: rgb(249, 126, 118);
+  }
 }
 .nav-item{
     width:33px;
