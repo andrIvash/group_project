@@ -155,22 +155,42 @@ var UplFileModul = (function($) {
 var WaterMarkDragAndDrop = (function(){
     var watermark = $('#blWtk'),
         watermarkParent = watermark.parent(),
+        wtmX = $('#wtmX'),
+        wtmY = $('#wtmY'),
         init = function(){
             _setUpListeners();
+            _setDefault();
         },
         _setUpListeners = function(){
-            _positionChangedEventHandler();
+            _changePositionEventHandler();
             _dragEventHandler();
         },
-        _dragEventHandler = function(){
-            watermark.draggable();
+        _setDefault = function(){
+            wtmX.val(0);
+            wtmY.val(0);
+
+            _positioning('left', 'top', watermarkParent);
         },
-        _positionChangedEventHandler = function(){
+        _dragEventHandler = function(){
+                watermark.draggable({
+                    containment:watermarkParent,
+                    drag: _positionChanged
+                });
+        },
+        _changePositionEventHandler = function(){
             $('#positions')
                 .find('.nav-item')
-                .on('click', _positionChanged);
+                .on('click', _changePosition);
         },
-        _positionChanged = function(e){
+        _positionChanged = function() {
+            var left = watermark.position().left,
+                top = watermark.position().top;
+
+            wtmX.val(left);
+            wtmY.val(top);
+
+        },
+        _changePosition = function(e){
             var $this = $(this);
                 positions = $this.data('target-position').split(',');
 
@@ -180,10 +200,9 @@ var WaterMarkDragAndDrop = (function(){
 
             $this.addClass('current');
             _positioning(positions[0], positions[1], watermarkParent);
+            _positionChanged();
         },
         _positioning = function(horizontalAlign, verticalAlign, parent){
-
-
             watermark.position({
                 my: horizontalAlign + " " + verticalAlign,
                 at: horizontalAlign + " " + verticalAlign,
