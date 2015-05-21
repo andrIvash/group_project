@@ -13,20 +13,24 @@
     .result-window .result-window_wrapper .result-window__body {
       position: relative;
       overflow: hidden;
+      text-align: center;
       height: 533px;
-      background-color: #ffffff; }
+      background-color: #ffffff;
+      background-image: url("../img/result_bg.png"); }
+      .result-window .result-window_wrapper .result-window__body .result-window__body__wrapper {
+        display: inline-block;
+        position: relative;
+        top: 50%;
+        max-height: 100%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%); }
       .result-window .result-window_wrapper .result-window__body .result-window__body__source {
-        height: 100%;
-        width: 100%;
-        position: relative; }
+        position: relative;
+        text-align: center; }
         .result-window .result-window_wrapper .result-window__body .result-window__body__source .source__img {
-          position: absolute;
-          margin: auto;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          width: 100%; }
+          max-width: 650px;
+          max-height: 533px; }
       .result-window .result-window_wrapper .result-window__body .result-window__body__watermarks {
         position: absolute;
         top: 0;
