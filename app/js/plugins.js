@@ -11,7 +11,7 @@
 			function _changeOpacity(e, ui) {
 
 				var watermark = $('#blWtk');
-                
+
                 watermark.fadeTo( "fast", ui.value/100 );
                 console.log("opacity changed to", ui.value);
 	        }
@@ -27,9 +27,61 @@
 	}());
 
 
+    //Сохранение итогового изображения
+    var saveResult = (function(){
+
+            // Подключаем прослушку событий
+            function _setUpListners(){
+                $('.submit-btn').on('click', _saveResultImg);
+
+            }
+
+            function _saveResultImg(e) {
+                e.preventDefault();
+                console.log('click submit form')
+
+                var url = 'php/action-save.php',
+//-----------------------data = ,  !!cюда передать объект
+                    defObject = _ajaxForm(data, url);                                 
+                
+                console.log(data);    
+                    
+                defObject.done(function(ans){
+                    console.log('Изображение '+ans+' сохранено');
+                })    
+
+            }
+
+            // Универсальная функция ajax
+            function _ajaxForm(data, url){
+ 
+                var defObj = $.ajax({
+                        type : "POST",
+                        url : url,
+                        data: data
+                    }).fail(function(){
+                        console.log('Проблемы на стороне сервера');
+                    })
+ 
+                return defObj;
+            }
+        // Возвращаем в глобальную область видимости
+            return {
+                init: function () {
+                    _setUpListners();
+                }
+            }
+
+    }());
+
+
+
+
+
 	$(document).ready(function(){
 
 		setOpacity.init();
+        saveResult.init();
 
 	})
 
