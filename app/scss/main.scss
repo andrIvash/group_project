@@ -5,82 +5,75 @@
 @import 'result-window';
 @import 'img-downloader';
 @import 'positions';
-
-
-
-
-.main-container { 
-}     
-
+@import 'opacity';
 .main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: 960px;
-  height: 670px;
-  background-color: #615c60;
-  
-  
-}
-.content{
-  float:left;
+    // position: relative;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
+    margin: 60px auto 0;
+    width: 960px;
+    height: 670px;
+    background-color: #615c60;
+    &:after{
+      content:'';
+      display:block;
+      height:40px;
+    }
 }
 
+.content {
+    float: left;
+}
 /*sidebar*/
 
-.sidebar{
-  float:right;
-  background-color: #fff;
-  width: 27.08333%;
-  min-height:100%;
-  height:100%;
+.sidebar {
+    float: right;
+    background-color: #fff;
+    width: 27.08333%;
+    min-height: 100%;
+    height: 100%;
 }
 
-.sidebar-block-title{
-  display:inline-block; 
-  font-family: 'robotolight';
-  font-size: 26px;
-  font-weight: normal;
-  width:100%;
-  text-align: center;
-  color:$dark;
-  margin: 22px auto 29px; 
-}
- 
- .module-suit{
-  position: relative;
-  background: #FFF;
-  border-bottom: 1px solid $pink;
-  margin-bottom:11px;
-
-  &:after, &:before{
-    top: 100%;
-    left: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-  }
-  &:after{
-    border-color: rgba(255, 255, 255, 0);
-    border-top-color: #FFF;
-    border-width: 10px;
-    margin-left: -10px;
-    z-index:101;
-  }
-  &:before{
-    border-color: #fff;
-    border-top-color: $pink;
-    border-width: 11px;
-    margin-left: -11px;
-    z-index:100;
-  }
-  
+.sidebar-block-title {
+    display: inline-block;
+    font-family: 'robotolight';
+    font-size: 26px;
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+    color: $dark;
+    margin: 22px auto 29px;
 }
 
-
+.module-suit {
+    position: relative;
+    background: #FFF;
+    border-bottom: 1px solid $pink;
+    margin-bottom: 11px;
+    &:after, &:before {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    &:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-top-color: #FFF;
+        border-width: 10px;
+        margin-left: -10px;
+        z-index: 101;
+    }
+    &:before {
+        border-color: #fff;
+        border-top-color: $pink;
+        border-width: 11px;
+        margin-left: -11px;
+        z-index: 100;
+    }
+}

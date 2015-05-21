@@ -35,3 +35,20 @@ $pink: #f97e76;
     -o-transition: $val;
    transition: $val;
  }
+ @mixin main-bg-size($arg){
+    -webkit-background-size: $arg;
+    -moz-background-size: $arg;
+    -o-background-size: $arg;
+    background-size: $arg;
+ }  
+ @mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}

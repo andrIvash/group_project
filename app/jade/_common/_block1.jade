@@ -1,13 +1,55 @@
-.block.img-downloader.module-suit
-	.form-wraper
-		form#downloader(action="", name="img-downloader")
-			.wraper-input
-				label.main-form-label(for="upload-img") Исходное изображение
-				input.main-form-input(readonly="readonly", placeholder="Image.jpg")
-				input.main-form-upload(type="file", id="bgInp", name="files[]" data-url="../app/php/")
-				.upload-btn
-			.wraper-input
-				label.main-form-label(for="upload-watermark") Водяной знак
-				input.main-form-input(readonly="readonly", placeholder="Image.png")
-				input.main-form-upload(type="file", id="wtkInp", name="files[]" data-url="../app/php/")
-				.upload-btn
+.form-wraper
+		form#options(action="", name="img-opstions")
+			.module-suit.img-downloader
+				.wraper-input
+					label.main-form-label(for="upload-img") Исходное изображение
+					input.main-form-input(readonly="readonly", placeholder="Image.jpg")
+					input.main-form-upload(type="file", id="bgInp", name="files[]" data-url="../app/php/")
+					.upload-btn
+				.wraper-input
+					label.main-form-label(for="upload-watermark") Водяной знак
+					input.main-form-input(readonly="readonly", placeholder="Image.png")
+					input.main-form-upload(type="file", id="wtkInp", name="files[]" data-url="../app/php/")
+					.upload-btn
+			.module-suit.positions
+				.wraper-input.position-title
+					label.main-form-label(for="position") Положение
+						.pos-trigger
+							.trigger-btn.tileon
+							.trigger-btn.oneoff
+				.wraper-input
+					.visual-nav
+						.nav-field
+							div(data-target-position='left,top').nav-item
+							div(data-target-position='center,top').nav-item
+							div(data-target-position='right,top').nav-item
+
+							div(data-target-position='left,center').nav-item
+							div(data-target-position='center,center').nav-item
+							div(data-target-position='right,center').nav-item
+
+							div(data-target-position='left,bottom').nav-item
+							div(data-target-position='center,bottom').nav-item
+							div(data-target-position='right,bottom').nav-item
+					.namb-nav
+						.namb-field
+							.method.meth-x
+								input.n-nav(type="number")#wtmX
+								//- .arrows-wrap
+								//- 	.arrow-up
+								//- 	.arrow-down
+
+							.method.meth-y
+								input.n-nav(type="number")#wtmY
+								//- .arrows-wrap
+								//- 	.arrow-up
+								//- 	.arrow-down
+			.module-suit.opacity
+				.wraper-input.position-title
+					label.main-form-label(for="opacity-range") Прозрачность
+				.wraper-input
+					input.range-input(type="range" min="0" max="100" step="0")
+			.btn-block
+				.wraper-input_bth
+					input.main-form-btn.reset-btn(type="reset" value= "Сброс")
+					input.main-form-btn.submit-btn(type="button" value= "Скачать")

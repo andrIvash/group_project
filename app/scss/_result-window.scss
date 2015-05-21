@@ -21,8 +21,8 @@
 
       
       .img{
-        display: block;
-        width: auto;
+        //display: block;
+        //width: 100%;
       }
       .result-window__body__source{
         height: 100%;
@@ -37,7 +37,7 @@
           right: 0;
         }
       }
-      .result-window__body__watermarks{ 
+      .result-window__body__watermarks{  
         position: absolute;
         //width: 1000px;
         //height: 1000px;

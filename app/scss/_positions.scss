@@ -80,6 +80,7 @@
     border-top:none;
     float:left;
     @include main-trans(.5s);
+    cursor:pointer;
 
     &:nth-child(3n){
         border-right:none;

@@ -121,9 +121,18 @@ var UplFileModul = (function($) {
                 dataType: 'json',
                 done: function (e, data) {
                     $.each(data.result.files, function (index, file) {
-                        obj[key].blk.html('<img src="../app/php/files/'+file.name+'" alt="">');
+                        obj[key].blk.html('<img src="../app/php/files/'+file.name+'" alt="" >');
                         _c(obj[key].name);
+                        //----------------  добавление класов к картинкам
+                        if(key == 'bg') {
+                           $('#blBg img').addClass('img source__img');
+                        }
 
+                        if(key == 'wtk') {
+                           $('#blWtk img').addClass('img watermark');
+                        }
+
+                        //--------------------
                         for (var prop in file) {
                             _newImg[obj[key].name][prop] = file[prop];
                         };
@@ -146,22 +155,42 @@ var UplFileModul = (function($) {
 var WaterMarkDragAndDrop = (function(){
     var watermark = $('#blWtk'),
         watermarkParent = watermark.parent(),
+        wtmX = $('#wtmX'),
+        wtmY = $('#wtmY'),
         init = function(){
             _setUpListeners();
+           _setDefault();
         },
         _setUpListeners = function(){
-            _positionChangedEventHandler();
+            _changePositionEventHandler();
             _dragEventHandler();
         },
-        _dragEventHandler = function(){
-            watermark.draggable();
+        _setDefault = function(){
+            wtmX.val(0);
+            wtmY.val(0);
+
+            _positioning('left', 'top', watermarkParent);
         },
-        _positionChangedEventHandler = function(){
+        _dragEventHandler = function(){
+                watermark.draggable({
+                    containment:watermarkParent,
+                    drag: _positionChanged
+                });
+        },
+        _changePositionEventHandler = function(){
             $('#positions')
                 .find('.nav-item')
-                .on('click', _positionChanged);
+                .on('click', _changePosition);
         },
-        _positionChanged = function(e){
+        _positionChanged = function() {
+            var left = watermark.position().left,
+                top = watermark.position().top;
+
+            wtmX.val(left);
+            wtmY.val(top);
+
+        },
+        _changePosition = function(e){
             var $this = $(this);
                 positions = $this.data('target-position').split(',');
 
@@ -171,14 +200,19 @@ var WaterMarkDragAndDrop = (function(){
 
             $this.addClass('current');
             _positioning(positions[0], positions[1], watermarkParent);
+            _positionChanged();
         },
         _positioning = function(horizontalAlign, verticalAlign, parent){
+            var myHor = horizontalAlign,
+                myVert = verticalAlign;
 
+            console.log(horizontalAlign, verticalAlign);
 
             watermark.position({
+                collision: 'fit',
+                of: parent,
                 my: horizontalAlign + " " + verticalAlign,
-                at: horizontalAlign + " " + verticalAlign,
-                of: parent
+                at: horizontalAlign + " " + verticalAlign
             });
         }
     return {
