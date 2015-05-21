@@ -179,7 +179,7 @@ var WaterMarkDragAndDrop = (function(){
                 });
         },
         _changePositionEventHandler = function(){
-            $('#positions')
+            $('.nav-field')
                 .find('.nav-item')
                 .on('click', _changePosition);
         },
