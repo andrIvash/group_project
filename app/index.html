@@ -23,6 +23,7 @@
     <!-- build:css css/vendor.min.css -->
     <!-- bower:css-->
     <link rel="stylesheet" href="bower/normalize.css/normalize.css">
+    <link rel="stylesheet" href="bower/jquery-ui/themes/base/jquery-ui.min.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css css/common.min.css -->
@@ -105,7 +106,8 @@
                 <label for="opacity-range" class="main-form-label">Прозрачность</label>
               </div>
               <div class="wraper-input">
-                <input type="range" min="0" max="100" step="0" class="range-input"> </div>
+                <div id="slider" class="slider"></div>
+              </div>
             </div>
             <div class="btn-block">
               <div class="wraper-input_bth">

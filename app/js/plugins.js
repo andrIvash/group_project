@@ -1,46 +1,21 @@
 (function($){
 
-	var SaveScreen = (function(){
+	var setOpacity = (function(){
 
 			// Подключаем прослушку событий
 			function _setUpListners(){
-				$('.save-button').on('click', _saveData);
+				$('.range-input').on('slide', _changeOpacity);
 
 			}
 
-			function _saveData(e) {
-				e.preventDefault();
-
-				//инициализация плагина
-				$('.save-img').html2canvas();
-
-				var	url = 'php/action-save.php',
-				    canvas = $('canvas')[0],
-	                data = canvas.toDataURL('image/png').replace(/data:image\/png;base64,/, ''),
-	                defObject = _ajaxForm(data, url);
-
-
-	            $('canvas').remove();
-
-	            defObject.done(function(ans){
-	               	console.log('Изображение '+ans+' сохранено');
-	            })
+			function _changeOpacity(e, value) {
+				$( '.range-input' ).slider({
+                  values: [ 10, 25 ]
+                });
+                console.log("value changed to", value);
 	        }
 
-			// Универсальная функция ajax
-			function _ajaxForm(data, url){
-
-				var defObj = $.ajax({
-						type : "POST",
-						url : url,
-						data: data
-					}).fail(function(){
-						console.log('Проблемы на стороне сервера');
-					})
-
-				return defObj;
-			}
-
+			
 		// Возвращаем в глобальную область видимости
 			return {
 				init: function () {
@@ -52,8 +27,8 @@
 
 
 	$(document).ready(function(){
-
-		SaveScreen.init();
+        
+		setOpacity.init();
 
 	})
 
