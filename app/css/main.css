@@ -119,7 +119,13 @@
   font-style: normal; }
 
 html, body {
-  font: 1em/1.4; }
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  font: 1em/1.4;
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%; }
 
 /* clear _____________________________________________________________________*/
 .clearfix:before,
@@ -713,12 +719,6 @@ input::-webkit-outer-spin-button {
   .arrow-down:active {
     background-position: 0 100%;
     cursor: pointer; }
-
-.main-container {
-  min-width: 1200px;
-  height: 800px;
-  position: relative;
-  background: url("../img/bg.jpg") no-repeat; }
 
 .main {
   position: absolute;
