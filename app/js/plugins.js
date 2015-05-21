@@ -1,18 +1,19 @@
 (function($){
-
+   //Изменение прозрачности Watermark
 	var setOpacity = (function(){
 
 			// Подключаем прослушку событий
 			function _setUpListners(){
-				$('.range-input').on('slide', _changeOpacity);
+				$('#slider').on('slidechange', _changeOpacity);
 
 			}
 
-			function _changeOpacity(e, value) {
-				$( '.range-input' ).slider({
-                  values: [ 10, 25 ]
-                });
-                console.log("value changed to", value);
+			function _changeOpacity(e, ui) {
+
+				var watermark = $('#blWtk');
+                
+                watermark.fadeTo( "fast", ui.value/100 );
+                console.log("opacity changed to", ui.value);
 	        }
 
 			
@@ -27,7 +28,7 @@
 
 
 	$(document).ready(function(){
-        
+
 		setOpacity.init();
 
 	})
