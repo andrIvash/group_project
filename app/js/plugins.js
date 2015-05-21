@@ -159,7 +159,7 @@ var WaterMarkDragAndDrop = (function(){
         wtmY = $('#wtmY'),
         init = function(){
             _setUpListeners();
-            _setDefault();
+           _setDefault();
         },
         _setUpListeners = function(){
             _changePositionEventHandler();
@@ -203,10 +203,16 @@ var WaterMarkDragAndDrop = (function(){
             _positionChanged();
         },
         _positioning = function(horizontalAlign, verticalAlign, parent){
+            var myHor = horizontalAlign,
+                myVert = verticalAlign;
+
+            console.log(horizontalAlign, verticalAlign);
+
             watermark.position({
+                collision: 'fit',
+                of: parent,
                 my: horizontalAlign + " " + verticalAlign,
-                at: horizontalAlign + " " + verticalAlign,
-                of: parent
+                at: horizontalAlign + " " + verticalAlign
             });
         }
     return {
