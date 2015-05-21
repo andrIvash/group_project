@@ -157,9 +157,9 @@ var WaterMarkDragAndDrop = (function(){
         watermarkParent = watermark.parent(),
         wtmX = $('#wtmX'),
         wtmY = $('#wtmY'),
-        init = function(){
+        _init = function(){
             _setUpListeners();
-           _setDefault();
+            _setDefault();
         },
         _setUpListeners = function(){
             _changePositionEventHandler();
@@ -174,6 +174,7 @@ var WaterMarkDragAndDrop = (function(){
         _dragEventHandler = function(){
                 watermark.draggable({
                     containment:watermarkParent,
+                    scroll: false,
                     drag: _positionChanged
                 });
         },
@@ -188,7 +189,6 @@ var WaterMarkDragAndDrop = (function(){
 
             wtmX.val(left);
             wtmY.val(top);
-
         },
         _changePosition = function(e){
             var $this = $(this);
@@ -206,8 +206,6 @@ var WaterMarkDragAndDrop = (function(){
             var myHor = horizontalAlign,
                 myVert = verticalAlign;
 
-            console.log(horizontalAlign, verticalAlign);
-
             watermark.position({
                 collision: 'fit',
                 of: parent,
@@ -216,6 +214,6 @@ var WaterMarkDragAndDrop = (function(){
             });
         }
     return {
-        Init: init
+        Init: _init
     }
 })();
