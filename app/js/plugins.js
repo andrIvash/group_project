@@ -213,12 +213,35 @@ var WaterMarkDragAndDrop = (function(){
             var image = main.find('.source__img'),
                 wtm = watermark.find('.img'),
                 wtmWidth = typeof wtm[0] === 'undefined' ? 0 : wtm[0].naturalWidth,
+                wtmHeight = typeof wtm[0] === 'undefined' ? 1 : wtm[0].naturalHeight,
                 naturalWidth = typeof image[0] === 'undefined' ? 0 : image[0].naturalWidth,
+                naturalHeight = typeof image[0] === 'undefined' ? 0 : image[0].naturalHeight,
                 currentWidth = typeof image[0] === 'undefined' ? 1 : image[0].clientWidth,
+                currentHeight = typeof image[0] === 'undefined' ? 1 : image[0].clientHeight,
                 ratio = naturalWidth / currentWidth,
                 relWidth = wtmWidth / ratio;
 
             rate = ratio;
+
+            if(wtmWidth >= wtmHeight){
+                if(naturalWidth <= wtmWidth){
+                    relWidth = currentWidth;
+                }else if(naturalHeight <= wtmHeight){
+                    relWidth = wtmWidth / (naturalHeight / wtmHeight);
+                    console.log('height ' + relWidth);
+                }
+            }else{
+
+                if(naturalWidth <= wtmWidth){
+                    relWidth = currentWidth;
+                    if(naturalHeight <= wtmHeight){
+                        relWidth = (wtmWidth ) / (wtmHeight / currentHeight);
+                    }
+                }else if(naturalHeight <= wtmHeight){
+                    relWidth = wtmWidth / (naturalHeight / wtmHeight);
+                    console.log('height ' + relWidth);
+                }
+            }
 
             if(relWidth !== 0){
                 wtm.css({"width": relWidth + "px"});
