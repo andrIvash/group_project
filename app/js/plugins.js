@@ -160,15 +160,13 @@ var WaterMarkDragAndDrop = (function(){
         _onImageLoad = function(){
             var image = main.find('.source__img'),
                 wtm = watermark.find('.img'),
-                wtmWidth = typeof wtm[0] === 'undefined' ? 0 : wtm[0].clientWidth,
+                wtmWidth = typeof wtm[0] === 'undefined' ? 0 : wtm[0].naturalWidth,
                 naturalWidth = typeof image[0] === 'undefined' ? 0 : image[0].naturalWidth,
                 currentWidth = typeof image[0] === 'undefined' ? 1 : image[0].clientWidth,
-                ratio = naturalWidth / currentWidth;
+                ratio = naturalWidth / currentWidth,
+                relWidth = wtmWidth / ratio;
 
-            watermarkOriginWidth = watermarkOriginWidth === 'null' && wtmWidth !== 0 ? wtmWidth : watermarkOriginWidth;
             rate = ratio;
-
-            var relWidth = watermarkOriginWidth / rate;
 
             if(relWidth !== 0){
                 wtm.css({"width": relWidth + "px"});
