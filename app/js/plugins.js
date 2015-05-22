@@ -114,6 +114,7 @@ var UplFileModul = (function($) {
                         };
                         _c(_newImg);//отображаем данные загруженного изображения
                     });
+                    WaterMarkDragAndDrop.Init();
                 }
             });
 
@@ -129,23 +130,46 @@ var UplFileModul = (function($) {
 
 //Модуль изменения положения watermark
 var WaterMarkDragAndDrop = (function(){
-    var watermark = $('#blWtk'),
+    var main = $('#blBg'),
+        watermark = $('#blWtk'),
         watermarkParent = watermark.parent(),
         wtmX = $('#wtmX'),
         wtmY = $('#wtmY'),
+        rate = 0,
         _init = function(){
             _setUpListeners();
-            _setDefault();
+            _setDefaults();
         },
         _setUpListeners = function(){
             _changePositionEventHandler();
             _dragEventHandler();
         },
-        _setDefault = function(){
+        _setDefaults = function(){
+            var image = main.find('.source__img'),
+                wtm = watermark.find('.img');
+
             wtmX.val(0);
             wtmY.val(0);
 
-            _positioning('left', 'top', watermarkParent);
+            image.load(_onImageLoad);
+            wtm.load(_onImageLoad);
+
+            watermark.css({'left':0, 'top':0});
+        },
+        _onImageLoad = function(){
+            var image = main.find('.source__img'),
+                wtm = watermark.find('.img'),
+                wtmWidth = typeof wtm[0] === 'undefined' ? 0 : wtm[0].clientWidth,
+                naturalWidth = typeof image[0] === 'undefined' ? 0 : image[0].naturalWidth,
+                currentWidth = typeof image[0] === 'undefined' ? 1 : image[0].clientWidth,
+                ratio = naturalWidth / currentWidth,
+                relWidth = wtmWidth / ratio;
+
+            rate = ratio;
+
+            if(relWidth !== 0){
+                wtm.css({"width": relWidth + "px"});
+            }
         },
         _dragEventHandler = function(){
                 watermark.draggable({
@@ -163,11 +187,11 @@ var WaterMarkDragAndDrop = (function(){
             var left = watermark.position().left,
                 top = watermark.position().top;
 
-            wtmX.val(left);
-            wtmY.val(top);
+            wtmX.val(left / rate);
+            wtmY.val(top / rate);
         },
         _changePosition = function(e){
-            var $this = $(this);
+            var $this = $(this),
                 positions = $this.data('target-position').split(',');
 
             $('.nav-item').each(function( index ) {
