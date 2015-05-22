@@ -133,6 +133,7 @@ var WaterMarkDragAndDrop = (function(){
     var main = $('#blBg'),
         watermark = $('#blWtk'),
         watermarkParent = watermark.parent(),
+        watermarkOriginWidth = 'null',
         wtmX = $('#wtmX'),
         wtmY = $('#wtmY'),
         rate = 0,
@@ -162,10 +163,12 @@ var WaterMarkDragAndDrop = (function(){
                 wtmWidth = typeof wtm[0] === 'undefined' ? 0 : wtm[0].clientWidth,
                 naturalWidth = typeof image[0] === 'undefined' ? 0 : image[0].naturalWidth,
                 currentWidth = typeof image[0] === 'undefined' ? 1 : image[0].clientWidth,
-                ratio = naturalWidth / currentWidth,
-                relWidth = wtmWidth / ratio;
+                ratio = naturalWidth / currentWidth;
 
+            watermarkOriginWidth = watermarkOriginWidth === 'null' && wtmWidth !== 0 ? wtmWidth : watermarkOriginWidth;
             rate = ratio;
+
+            var relWidth = watermarkOriginWidth / rate;
 
             if(relWidth !== 0){
                 wtm.css({"width": relWidth + "px"});
