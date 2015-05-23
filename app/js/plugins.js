@@ -34,7 +34,7 @@
             // Подключаем прослушку событий
             function _setUpListners(){
                 $('.submit-btn').on('click', _saveResultImg);
-                $('.reset-btn').on('click', _delImages;
+                $('.reset-btn').on('click', _delImages);
 
             }
 
