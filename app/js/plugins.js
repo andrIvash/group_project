@@ -14,6 +14,7 @@
 
                 watermark.fadeTo( "fast", ui.value/100 );
                 console.log("opacity changed to", ui.value);
+                UplFileModul.newImg.watermark.opacity = ui.value;
 	        }
 
 			
@@ -39,9 +40,12 @@
             function _saveResultImg(e) {
                 e.preventDefault();
                 console.log('click submit form')
+                
+                //Записываем в основной объект инфрмацию о размерах изображений (в px)
+                UplFileModul.getImgSize();
 
                 var url = 'php/action-save.php',
-//-----------------------data = ,  !!cюда передать объект
+                    data = UplFileModul.newImg,
                     defObject = _ajaxForm(data, url);                                 
                 
                 console.log(data);    
@@ -74,6 +78,27 @@
 
     }());
 
+    
+    //Очистка данных
+    var clearForm = (function(){
+            function _binds(){
+                $('#options').on('reset', _clearOllData);
+            }
+
+            function _clearOllData(){
+                $('#blBg').html('');
+                $('#blWtk').html('');
+                UplFileModul.clearNewImg();
+            }
+
+            // Возвращаем в глобальную область видимости
+            return {
+                init: function () {
+                    _binds();
+                }
+            }
+    })();
+
 
 
 
@@ -82,6 +107,7 @@
 
 		setOpacity.init();
         saveResult.init();
+        clearForm.init();
 
 	})
 
@@ -92,15 +118,18 @@
 var UplFileModul = (function($) {
     'use strict';
     var init = function(bgInp, wtkInp, blBg, blWtk){//инициализация плагина
-        _c("Инициализировали модуль formValModul");
+        _c("Инициализировали модуль UplFileModul");
 
-        var $_bgInp = $(bgInp),
-            $_wtkInp = $(wtkInp),
-            $_blBg = $(blBg),
-            $_blWtk = $(blWtk);
+        var $_bgInp = $('#'+bgInp),
+            $_wtkInp = $('#'+wtkInp),
+            $_cls_bgInp = $('.'+bgInp),
+            $_cls_wtkInp = $('.'+wtkInp),
+            $_blBg = $('#'+blBg),
+            $_blWtk = $('#'+blWtk);
 
         if($_bgInp.length === 0 || $_wtkInp.length === 0 || $_blBg.length === 0 || $_blWtk.length === 0){
             console.error('Ошибка инициализации плагина UplFileModul - переданные блоки не существуют!');
+            return false;
         }
 
 
@@ -108,17 +137,19 @@ var UplFileModul = (function($) {
             'bg' : {
                 'name': 'background',
                 'inp' : $_bgInp,
-                'blk' : $_blBg
+                'blk' : $_blBg,
+                'view': $_cls_bgInp
             },
             'wtk' :{
                 'name': 'watermark',
                 'inp' : $_wtkInp,
-                'blk' : $_blWtk
+                'blk' : $_blWtk,
+                'view': $_cls_wtkInp
             }
         });
     },
     _c = function(mas){//console.log
-        var flag = true;
+        var flag = false;
         if (flag) {console.log(mas);};
     },
     _createObj = function(){
@@ -131,13 +162,31 @@ var UplFileModul = (function($) {
             this.type = '';
             this.width = '';
             this.height = '';
-            this.posX = '';
-            this.posY = '';
+            this.posX = 0;
+            this.posY = 0;
+            this.opacity = 100;
 
     },
-    _newImg = {//Объект с полной информациях о загруженных изображениях
+    newImg = {//Объект с полной информациях о загруженных изображениях
         'background' : new _createObj(),
         'watermark' : new _createObj()
+    },
+    getImgSize = function(){//получаем размеры загруженных изображений
+
+        var bg = $(blBg).children('img')[0],
+            bgH = bg.naturalHeight,
+            bgW = bg.naturalWidth,
+            wtr = $(blWtk).children('img')[0],
+            wtrH = wtr.naturalHeight,
+            wtrW = wtr.naturalWidth;
+        newImg.background.height = bgH;
+        newImg.background.width = bgW;
+        newImg.watermark.height = wtrH;
+        newImg.watermark.width = wtrW;
+    },
+    clearNewImg = function(){
+        newImg.background = new _createObj();
+        newImg.watermark = new _createObj();
     },
     _addUplPlgn = function(obj){//инициализируем плагин  jQuery-File-Upload https://github.com/blueimp/jQuery-File-Upload
 
@@ -149,22 +198,16 @@ var UplFileModul = (function($) {
                 dataType: 'json',
                 done: function (e, data) {
                     $.each(data.result.files, function (index, file) {
-                        obj[key].blk.html('<img src="../app/php/files/'+file.name+'" alt="" >');
-                        _c(obj[key].name);
-                        //----------------  добавление класов к картинкам
-                        if(key == 'bg') {
-                           $('#blBg img').addClass('img source__img');
-                        }
+                        var classImg = key === 'bg' ? 'img source__img' : 'img watermark';
+                        obj[key].blk.html('<img src="../app/php/files/'+file.name+'" alt="" class="'+classImg+'" >');
 
-                        if(key == 'wtk') {
-                           $('#blWtk img').addClass('img watermark');
-                        }
-
-                        //--------------------
                         for (var prop in file) {
-                            _newImg[obj[key].name][prop] = file[prop];
+                            newImg[obj[key].name][prop] = file[prop];
                         };
-                        _c(_newImg);//отображаем данные загруженного изображения
+
+                        obj[key].view.val(newImg[obj[key].name].name);
+
+                        _c(file);//отображаем данные загруженного изображения
                     });
                     WaterMarkDragAndDrop.Init();
                 }
@@ -176,7 +219,13 @@ var UplFileModul = (function($) {
 
     };
 
-    return {init : init};
+    return {
+        init : init, 
+        newImg : newImg, 
+        getImgSize : getImgSize, 
+        clearNewImg : clearNewImg
+    };
+
 })(jQuery);
 
 
@@ -265,6 +314,10 @@ var WaterMarkDragAndDrop = (function(){
 
             wtmX.val(left / rate);
             wtmY.val(top / rate);
+
+            //Записываем информацию о положении watermark в основной объект с данными (в px)
+            UplFileModul.newImg.watermark.posX = left*rate;
+            UplFileModul.newImg.watermark.posY = top*rate;
         },
         _changePosition = function(e){
             var $this = $(this),

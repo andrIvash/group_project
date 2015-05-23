@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	UplFileModul.init('#bgInp', '#wtkInp', '#blBg', '#blWtk');
+	UplFileModul.init('bgInp', 'wtkInp', 'blBg', 'blWtk');
     WaterMarkDragAndDrop.Init();
     $( "#slider" ).slider({
                value: 100,
