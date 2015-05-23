@@ -28,32 +28,49 @@
 	}());
 
 
-    //Сохранение итогового изображения
+    //Сохранение итогового изображения и удаление исходный изображений
     var saveResult = (function(){
 
             // Подключаем прослушку событий
             function _setUpListners(){
                 $('.submit-btn').on('click', _saveResultImg);
+                $('.reset-btn').on('click', _delImages;
 
             }
 
             function _saveResultImg(e) {
                 e.preventDefault();
+                
                 console.log('click submit form')
                 
-                //Записываем в основной объект инфрмацию о размерах изображений (в px)
-                UplFileModul.getImgSize();
+                  
+                    //Записываем в основной объект инфрмацию о размерах изображений (в px)
+                    UplFileModul.getImgSize();
 
-                var url = 'php/action-save.php',
-                    data = UplFileModul.newImg,
-                    defObject = _ajaxForm(data, url);                                 
+                    var url = 'php/action-save.php',
+                        data = UplFileModul.newImg;
+
+                    if ( data['background']['height'] !== undefined && data['watermark']['height'] !== undefined) {    
+                        
+                        var    defObject = _ajaxForm(data, url);                                 
+                        
+                        console.log(data);    
+                            
+                        defObject.done(function(ans){
+                            console.log('Изображение '+ans+' сохранено');
+                            
+                            
+                            _delImages();
+                        })
+                    }
+
                 
-                console.log(data);    
-                    
-                defObject.done(function(ans){
-                    console.log('Изображение '+ans+' сохранено');
-                })    
 
+            }
+
+            function _delImages() {
+                $('.source__img').remove();
+                $('.watermark').remove();
             }
 
             // Универсальная функция ajax
@@ -173,16 +190,25 @@ var UplFileModul = (function($) {
     },
     getImgSize = function(){//получаем размеры загруженных изображений
 
-        var bg = $(blBg).children('img')[0],
-            bgH = bg.naturalHeight,
-            bgW = bg.naturalWidth,
-            wtr = $(blWtk).children('img')[0],
-            wtrH = wtr.naturalHeight,
-            wtrW = wtr.naturalWidth;
+        var bg = $(blBg).children('img')[0]
+
+        if(bg) {
+            var bgH = bg.naturalHeight,
+                bgW = bg.naturalWidth;
+        }
+        
+        var     wtr = $(blWtk).children('img')[0];
+        
+        if(wtr) {
+            var wtrH = wtr.naturalHeight,
+                wtrW = wtr.naturalWidth;
+        }
+
         newImg.background.height = bgH;
         newImg.background.width = bgW;
         newImg.watermark.height = wtrH;
         newImg.watermark.width = wtrW;
+        
     },
     clearNewImg = function(){
         newImg.background = new _createObj();
