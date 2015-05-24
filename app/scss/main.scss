@@ -6,6 +6,7 @@
 @import 'img-downloader';
 @import 'positions';
 @import 'opacity';
+
 .main {
     // position: relative;
     // top: 0;
@@ -16,6 +17,7 @@
     width: 960px;
     height: 670px;
     background-color: #615c60;
+
     &:after{
       content:'';
       display:block;
@@ -77,3 +79,6 @@
         z-index: 100;
     }
 }
+input:focus{
+    outline: none;
+  }

@@ -50,6 +50,19 @@
   <![endif]-->
     <!-- Content: start-->
     <div class="main">
+      <section class="content">
+        <div class="block result-window">
+          <div class="result-window_wrapper">
+            <div class="result-window__title">Генератор водяных знаков</div>
+            <div class="result-window__body">
+              <div class="result-window__body__wrapper">
+                <div id="blBg" class="result-window__body__source"> </div>
+                <div id="blWtk" class="result-window__body__watermarks"> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <aside class="sidebar">
         <h3 class="sidebar-block-title">Настройки</h3>
         <div class="form-wraper">
@@ -117,40 +130,25 @@
           </form>
         </div>
       </aside>
-      <section class="content">
-        <div class="block result-window">
-          <div class="result-window_wrapper">
-            <div class="result-window__title">Генератор водяных знаков</div>
-            <div class="result-window__body">
-              <div class="result-window__body__wrapper">
-                <div id="blBg" class="result-window__body__source"> </div>
-                <div id="blWtk" class="result-window__body__watermarks"> </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
     <!-- Content: end-->
-    <div class="socials">
-      <ul class="socials_list">
-        <li class="socials_list-item"><a href="#" class="socials_list-item-link active">РУС</a></li>
-        <li class="socials_list-item"><a href="#" class="socials_list-item-link ">ENG</a></li>
-      </ul>
+    <div class="socials-lang">
       <ul class="lang_list">
-        <li class="lang_list-item">
-          <a href="#" class="lang_list-item-link fb ">
-            <!--img(title=item, src='img/'+item+'.png', alt=item)--><span class="logo-hide">fb</span></a>
+        <li class="lang_list-item"><a href="#" class="lang_list-item-link active">РУС</a></li>
+        <li class="lang_list-item"><a href="#" class="lang_list-item-link ">ENG</a></li>
+      </ul>
+      <ul class="socials_list">
+        <li class="socials_list-item">
+          <a href="#" class="socials_list-item-link fb "></a>
         </li>
-        <li class="lang_list-item">
-          <a href="#" class="lang_list-item-link tw active">
-            <!--img(title=item, src='img/'+item+'.png', alt=item)--><span class="logo-hide">tw</span></a>
+        <li class="socials_list-item">
+          <a href="#" class="socials_list-item-link tw active"></a>
         </li>
-        <li class="lang_list-item">
-          <a href="#" class="lang_list-item-link vk ">
-            <!--img(title=item, src='img/'+item+'.png', alt=item)--><span class="logo-hide">vk</span></a>
+        <li class="socials_list-item">
+          <a href="#" class="socials_list-item-link vk "></a>
         </li>
       </ul>
+      <a href="javascript:SocialsActive()" class="like-btn"></a>
     </div>
     <!-- Footer: start    -->
     <div class="footer">
