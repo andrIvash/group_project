@@ -3,12 +3,12 @@
 			.module-suit.img-downloader
 				.wraper-input
 					label.main-form-label(for="upload-img") Исходное изображение
-					input.main-form-input(readonly="readonly", placeholder="Image.jpg")
+					input.main-form-input(readonly="readonly", placeholder="Image.jpg", class="bgInp")
 					input.main-form-upload(type="file", id="bgInp", name="files[]" data-url="../app/php/")
 					.upload-btn
 				.wraper-input
 					label.main-form-label(for="upload-watermark") Водяной знак
-					input.main-form-input(readonly="readonly", placeholder="Image.png")
+					input.main-form-input(readonly="readonly", placeholder="Image.png", class="wtkInp")
 					input.main-form-upload(type="file", id="wtkInp", name="files[]" data-url="../app/php/")
 					.upload-btn
 			.module-suit.positions
@@ -48,7 +48,8 @@
 				.wraper-input.position-title
 					label.main-form-label(for="opacity-range") Прозрачность
 				.wraper-input
-					input.range-input(type="range" min="0" max="100" step="0")
+					//-input.range-input(type="range" min="0" max="100" step="0") 
+					.slider(id="slider")
 			.btn-block
 				.wraper-input_bth
 					input.main-form-btn.reset-btn(type="reset" value= "Сброс")
