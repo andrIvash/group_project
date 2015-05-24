@@ -1,7 +1,7 @@
 <?php
 	use PHPImageWorkshop\ImageWorkshop; // Use the namespace of ImageWorkshop
 	require_once('PHPImageWorkshop/ImageWorkshop.php'); // Be sure of the path to the class
-
+	require_once('action-delete.php');
 	//$backUrl = $_POST['background']['url'];
  	//$waterUrl = $_POST['watermark']['url'];
  	//
@@ -25,12 +25,9 @@
   
 	$backgroundLayer->save($dirPath, $filename, $createFolders, $imageQuality);
     
+    deleteFiles($backUrl, $waterUrl);
 
-    //Deleting files
-    if (file_exists($backUrl) && file_exists($waterUrl)) {
-    	unlink($backUrl);
-    	unlink($waterUrl);
-	}
+    
     
 
   

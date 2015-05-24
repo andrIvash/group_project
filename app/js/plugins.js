@@ -34,7 +34,7 @@
             // Подключаем прослушку событий
             function _setUpListners(){
                 $('.submit-btn').on('click', _saveResultImg);
-                $('.reset-btn').on('click', _delImages);
+               
 
             }
 
@@ -60,7 +60,9 @@
                             console.log('Изображение '+ans+' сохранено');
                             
                             
-                            _delImages();
+                            clearForm.clear();
+                            $('#options').trigger( 'reset' );
+
                         })
                     }
 
@@ -68,10 +70,7 @@
 
             }
 
-            function _delImages() {
-                $('.source__img').remove();
-                $('.watermark').remove();
-            }
+           
 
             // Универсальная функция ajax
             function _ajaxForm(data, url){
@@ -106,12 +105,16 @@
                 $('#blBg').html('');
                 $('#blWtk').html('');
                 UplFileModul.clearNewImg();
+                var    defObject = _ajaxForm(data, url);
             }
 
             // Возвращаем в глобальную область видимости
             return {
                 init: function () {
                     _binds();
+                },
+                clear: function () {
+                    _clearOllData();
                 }
             }
     })();
