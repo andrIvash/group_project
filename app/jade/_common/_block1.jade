@@ -4,12 +4,12 @@
 				.wraper-input
 					label.main-form-label(for="upload-img") Исходное изображение
 					input.main-form-input(readonly="readonly", placeholder="Image.jpg", class="bgInp")
-					input.main-form-upload(type="file", id="bgInp", name="files[]" data-url="../app/php/")
+					input.main-form-upload(type="file", id="bgInp", name="files[]" data-url="../app/php/" accept="image/jpeg,image/png,image/gif")
 					.upload-btn
 				.wraper-input
 					label.main-form-label(for="upload-watermark") Водяной знак
-					input.main-form-input(readonly="readonly", placeholder="Image.png", class="wtkInp")
-					input.main-form-upload(type="file", id="wtkInp", name="files[]" data-url="../app/php/")
+					input.main-form-input(readonly="readonly", placeholder="Image.png", class="wtkInp") 
+					input.main-form-upload(type="file", id="wtkInp", name="files[]" data-url="../app/php/" accept="image/jpeg,image/png,image/gif")
 					.upload-btn
 			.module-suit.positions
 				.wraper-input.position-title
