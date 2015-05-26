@@ -57,14 +57,20 @@
                         console.log(data);    
                             
                         defObject.done(function(ans){
-                            console.log('Изображение '+ans+' сохранено');
+
+                            console.log(ans);
+                            window.location.href='php/download.php?url='+ans;
+                            //дописать запрос про удаление файлов
+                            
+
+                            
                             
                             
                             clearForm.clear();
                             $('#options').trigger( 'reset' );
 
                         })
-                    }
+                    } 
 
                 
 
@@ -228,7 +234,7 @@ var UplFileModul = (function($) {
                 done: function (e, data) {
                     $.each(data.result.files, function (index, file) {
                         var classImg = key === 'bg' ? 'img source__img' : 'img watermark';
-                        obj[key].blk.html('<img src="../app/php/files/'+file.name+'" alt="" class="'+classImg+'" >');
+                        obj[key].blk.html('<img src="php/files/'+file.name+'" alt="" class="'+classImg+'" >');
 
                         for (var prop in file) {
                             newImg[obj[key].name][prop] = file[prop];
@@ -372,6 +378,6 @@ var WaterMarkDragAndDrop = (function(){
             });
         }
     return {
-        Init: _init
+        Init: _init 
     }
 })();
