@@ -18,13 +18,17 @@
  	
 
  	// Saving the result
-	$dirPath = "../uploads/2015";
+	$dirPath = "../uploads/2015/";
+	
 	$filename = time().'.png';
 	$createFolders = true;
 	$imageQuality = 95; // useless for GIF, usefull for PNG and JPEG (0 to 100%)
   
 	$backgroundLayer->save($dirPath, $filename, $createFolders, $imageQuality);
     
+    echo $fname = $dirPath. $filename;
+	
+   
     deleteFiles($backUrl, $waterUrl);
 
     
