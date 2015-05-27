@@ -46,13 +46,14 @@
                   
                     //Записываем в основной объект инфрмацию о размерах изображений (в px)
                     UplFileModul.getImgSize();
+                    UplFileModul.newImg.event = 'save';//Записываем информацию о кнопке вызвавшей событие 
 
                     var url = 'php/action-save.php',
                         data = UplFileModul.newImg;
 
                     if ( data['background']['height'] !== undefined && data['watermark']['height'] !== undefined) {    
                         
-                        var    defObject = _ajaxForm(data, url);                                 
+                        var    defObject = ajaxForm(data, url);                                 
                         
                         console.log(data);    
                             
@@ -73,7 +74,7 @@
            
 
             // Универсальная функция ajax
-            function _ajaxForm(data, url){
+            function ajaxForm(data, url){
  
                 var defObj = $.ajax({
                         type : "POST",
@@ -89,7 +90,8 @@
             return {
                 init: function () {
                     _setUpListners();
-                }
+                },
+                ajaxForm :  ajaxForm
             }
 
     }());
@@ -102,10 +104,12 @@
             }
 
             function _clearOllData(){
+                UplFileModul.newImg.event = 'reset';//Записываем информацию о кнопке вызвавшей событие 
+                saveResult.ajaxForm(UplFileModul.newImg, 'php/action-save.php');
+               
                 $('#blBg').html('');
                 $('#blWtk').html('');
                 UplFileModul.clearNewImg();
-                var    defObject = _ajaxForm(data, url);
             }
 
             // Возвращаем в глобальную область видимости

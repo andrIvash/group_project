@@ -417,13 +417,8 @@ html, body {
 
 .socials_list {
   display: block;
-  float: left; }
-
-.socials_list-hide {
-  margin-left: -100%; }
-
-.socials_list-active {
-  margin-left: 0; }
+  float: left;
+  margin-left: -43px; }
 
 .lang_list {
   margin-bottom: 17px; }
