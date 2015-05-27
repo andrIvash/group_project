@@ -19,4 +19,12 @@
 		echo $_POST['url'];
 	}
 
+	if($_POST['event'] == 'reset') {
+		$back = '../php/files/' . $_POST['background']['name'];
+		$water = '../php/files/' . $_POST['watermark']['name'];
+		deleteFiles($back, $water);
+	}
+
+	
+ 	
 ?>

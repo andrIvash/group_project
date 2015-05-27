@@ -109,7 +109,7 @@
 
             function _clearOllData(){
                 UplFileModul.newImg.event = 'reset';//Записываем информацию о кнопке вызвавшей событие 
-                saveResult.ajaxForm(UplFileModul.newImg, 'php/action-save.php');
+                saveResult.ajaxForm(UplFileModul.newImg, 'php/action-delete.php');
                
                 $('#blBg').html('');
                 $('#blWtk').html('');
