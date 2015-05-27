@@ -53,7 +53,7 @@
 
                     if ( data['background']['height'] !== undefined && data['watermark']['height'] !== undefined) {    
                         
-                        var    defObject = ajaxForm(data, url);                                 
+                        var defObject = ajaxForm(data, url);                                 
                         
                         console.log(data);    
                             
@@ -61,16 +61,14 @@
 
                             console.log(ans);
                             window.location.href='php/download.php?url='+ans;
-                            //дописать запрос про удаление файлов
-                            
-
-                            
-                            
                             
                             clearForm.clear();
                             $('#options').trigger( 'reset' );
-
                         })
+                                                    
+                            
+                        
+
                     } 
 
                 

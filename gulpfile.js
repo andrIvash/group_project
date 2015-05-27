@@ -91,13 +91,14 @@ var path = {
 	build: {
 		html: './dist/',
 		js: './dist/js/',
+		php: './dist/php/',
 		plugins: './dist/plugins/',
 		img: './dist/img/',
 		font: './dist/font/'
 	},
 	src: {
 		html: './app/*.html',
-		php: './app/*.php',
+		php: './app/**/*.*',
 		js: './app/js/.js',
 		plugins: './app/plugins/**/*.*',
 		img: './app/img/**/*.*',

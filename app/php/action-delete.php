@@ -1,9 +1,22 @@
 <?php
-//Deleting files  Переписать функцию под массив аргументов
-	function deleteFiles($backUrl, $waterUrl) {
-	    if (file_exists($backUrl) && file_exists($waterUrl)) {
-	    	unlink($backUrl);
-	    	unlink($waterUrl);
+//Deleting files
+
+
+	function deleteFiles() {
+
+		$args = func_get_args();
+
+		foreach ($args as $k => $v) {
+			if (file_exists($v)) {
+		    	unlink($v);
+		    	
+			}
 		}
 	}
+
+	if (isset($_POST['url'])) {
+		deleteFiles($_POST['url']);
+		echo $_POST['url'];
+	}
+
 ?>
