@@ -1,4 +1,44 @@
 (function($){
+    //Размножение Watermark
+    var setTile = (function(){
+
+            // Подключаем прослушку событий
+            function _setUpListners(){
+                $('.pos-trigger').on('click', _setTile);
+                
+
+            }
+
+            function _setTile(e, ui) {
+
+                var target = e.target,
+                    trigger = $('.trigger-btn');
+                   
+                trigger.each(function( index ) {
+                    if ($(this).hasClass('active')) {
+                        $(this).removeClass('active');
+                    }
+                }); 
+
+                $(target).addClass('active');
+                
+            }
+
+            
+        // Возвращаем в глобальную область видимости
+            return {
+                init: function () {
+                    _setUpListners();
+                }
+            }
+
+    }());
+
+
+
+
+
+
    //Изменение прозрачности Watermark
 	var setOpacity = (function(){
 
@@ -40,12 +80,24 @@
 
             function _saveResultImg(e) {
                 e.preventDefault();
+                var tileOn = $('#tileon'),
+                    single = $('#single');
                 
                 console.log('click submit form')
                 
                   
                     //Записываем в основной объект инфрмацию о размерах изображений (в px)
                     UplFileModul.getImgSize();
+
+                    //перехватываем событие размножения ватермарки
+                    if ($(tileOn).hasClass('active')) {
+                        UplFileModul.newImg.tile = 'on';
+                    }
+
+                    if ($(single).hasClass('active')) {
+                        UplFileModul.newImg.tile = 'off';
+                    }
+
                     UplFileModul.newImg.event = 'save';//Записываем информацию о кнопке вызвавшей событие 
 
                     var url = 'php/action-save.php',
@@ -134,8 +186,10 @@
 	$(document).ready(function(){
 
 		setOpacity.init();
+        setTile.init();
         saveResult.init();
         clearForm.init();
+
 
 	})
 

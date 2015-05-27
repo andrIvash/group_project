@@ -865,6 +865,16 @@ html, body {
       opacity: 0.5;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
       filter: alpha(opacity=50); }
+    .pos-trigger .oneoff .active {
+      background-position: 100% 0; }
+
+.trigger-btn.tileon.active {
+  background-position: 0 0;
+  background-color: transparent; }
+
+.trigger-btn.oneoff.active {
+  background-position: 100% 0;
+  background-color: transparent; }
 
 .visual-nav, .namb-nav {
   width: 50%;

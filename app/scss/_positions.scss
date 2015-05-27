@@ -31,9 +31,14 @@
 
         &:active{
             @include main-opacity(.5);
+
         }
+        
+       
 
 	}
+
+
 	.oneoff{
 		float: right;
 		background-position:  100% 100%;
@@ -44,9 +49,32 @@
 
         &:active{
             @include main-opacity(.5);
+            
+        }
+
+        .active{
+            background-position: 100% 0; 
         }
 	}
+
+    
 }
+
+.trigger-btn.tileon.active {
+
+    background-position: 0 0;
+    background-color:transparent; 
+
+}   
+
+.trigger-btn.oneoff.active {
+
+    background-position: 100% 0;
+   background-color:transparent;
+}  
+
+
+
 .visual-nav, .namb-nav{
     width:50%;
     min-height: 100%;
