@@ -125,6 +125,55 @@
     }
 
 }
+
+/*Клонирование вотермарка*/
+.nav-item-clone{
+    width:33px;
+    height:33px;
+    background-color:$l-grey;
+    border:solid 1px $d-grey;
+    border-left:none;
+    border-top:none;
+    float:left;
+    @include main-trans(.5s);
+    cursor:pointer;
+
+    &:nth-child(3n){
+        border-right:none;
+    }
+    &:nth-child(7), &:nth-child(8), &:nth-child(9){
+        border-bottom:none;
+    }
+    &:nth-child(2), &:nth-child(5),&:nth-child(8){
+       position:relative;
+       
+       &:after{
+        display:block;
+        content:'';
+        margin: 0 auto;
+        width: 10%; // расстояние между клонами по вертикали
+        height:100%;
+        background-color:$pink;
+       }
+    }
+    &:nth-child(4),&:nth-child(5), &:nth-child(6){
+         position:relative;
+        &:before{
+        position:absolute;
+        display:block;
+        content:'';
+        margin: auto;
+        top: 0; 
+        left: 0; 
+        bottom: 0; 
+        right: 0;
+        width: 100%;
+        height:50%; // расстояние между клонами по горизонтали
+        background-color:$pink;
+
+        }
+    }
+}
 .numb-field{
     width:101px;
     height:101px;
@@ -140,18 +189,16 @@
     position:relative;
 }
 .meth-x{
-    background-position: 50% 0;
-
-    // &:hover{
-    //     background-position: 50% 100%;
-    // }
+    background-position: -40% -10%;
 }
 .meth-y{
-    background-position: -280% 0;
-
-    //  &:hover{
-    //     background-position: -280% 100%;
-    // }
+    background-position: 495% -10%;
+}
+.meth-clone-x{
+    background-position: -40% 100%;
+}
+.meth-clone-y{
+    background-position: 550% 100%
 }
 .n-nav{
     padding-left:.3em;
@@ -168,20 +215,13 @@ input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button {
     -webkit-appearance: none;
     background:#fff;
-    background-image:url(../img/arrows.png);
-    background-position: 0 0;
     width: 20px;
     opacity: 1;
     position: absolute;
     top: 0;
     right: -22px;
     bottom: 0;
-    z-index:200;
-
-    &:hover{
-        background-position: 100% 0;
-    }
-        
+ 
 }
 .arrows-wrap{
     position: absolute;
@@ -189,6 +229,7 @@ input::-webkit-outer-spin-button {
     top:0;
     height:46px;
     width:20px;
+    background:#fff;
 }
 .arrow-up,
 .arrow-down,{
@@ -207,9 +248,9 @@ input::-webkit-outer-spin-button {
         cursor:pointer;
     }
 }
-// .arrow-up{
-//     background-image:url(../img/arrow-up.png);
-// }
-// .arrow-down{
-//     background-image:url(../img/arrow-down.png);
-// }
+.arrow-up{
+    background-image:url(../img/arrow-up.png);
+}
+.arrow-down{
+    background-image:url(../img/arrow-down.png);
+}
