@@ -335,7 +335,6 @@ var WaterMarkDragAndDrop = (function(){
         },
         _setUpListeners = function(){
             _changePositionEventHandler();
-            _dragEventHandler();
         },
         _setDefaults = function(){
             var image = main.find('.source__img'),
@@ -348,6 +347,8 @@ var WaterMarkDragAndDrop = (function(){
             wtm.load(_onImageLoad);
 
             watermark.css({'left':0, 'top':0});
+
+            _syncObjectOnPositionChange(0, 0);
         },
         _onImageLoad = function(){
             var image = main.find('.source__img'),
@@ -395,20 +396,31 @@ var WaterMarkDragAndDrop = (function(){
                 });
         },
         _changePositionEventHandler = function(){
+            _dragEventHandler();
+
             $('.nav-field')
                 .find('.nav-item')
+                .unbind()
                 .on('click', _changePosition);
+
+            $('.arrows-wrap div').unbind().on('click', _onArrowClick);
+            $('#wtmX').unbind().on('change', _onInputValuePositionChanged);
+            $('#wtmY').unbind().on('change', _onInputValuePositionChanged);
         },
         _positionChanged = function() {
-            var left = watermark.position().left,
-                top = watermark.position().top;
+            var left = parseInt(watermark.position().left),
+                top = parseInt(watermark.position().top);
 
-            wtmX.val(left / rate);
-            wtmY.val(top / rate);
+            wtmX.val(parseInt(left / rate));
+            wtmY.val(parseInt(top / rate));
 
-            //Записываем информацию о положении watermark в основной объект с данными (в px)
-            UplFileModul.newImg.watermark.posX = left*rate;
-            UplFileModul.newImg.watermark.posY = top*rate;
+            _syncObjectOnPositionChange(left, top);
+        },
+        _onInputValuePositionChanged = function(){
+            var left = wtmX.val(),
+                top = wtmY.val()
+            _setPositionCoords(left, top);
+            _syncObjectOnPositionChange(left, top);
         },
         _changePosition = function(e){
             var $this = $(this),
@@ -432,6 +444,38 @@ var WaterMarkDragAndDrop = (function(){
                 my: horizontalAlign + " " + verticalAlign,
                 at: horizontalAlign + " " + verticalAlign
             });
+        },
+        _onArrowClick = function(e){
+            var arrow = $(e.target),
+                isLeftAlign = arrow.parent().hasClass('position-left'),
+                left = wtmX.val(),
+                top = wtmY.val(),
+                leftRelative = parseInt(left * rate),
+                topRelative = parseInt(top * rate);
+
+            if(isLeftAlign === true){
+                _changePositionInputValue(wtmX, arrow);
+            }else{
+                _changePositionInputValue(wtmY, arrow);
+            }
+
+            _setPositionCoords(leftRelative, topRelative);
+            _syncObjectOnPositionChange(leftRelative, topRelative);
+        },
+        _setPositionCoords = function(left, top){
+            watermark.css({'left':left+'px' , 'top':top+'px'});
+        },
+        _changePositionInputValue = function(inputElement, arrow){
+            if(arrow.hasClass('position-dec')){
+                inputElement.val(parseInt(inputElement.val()) - 1);
+            }else{
+                inputElement.val(parseInt(inputElement.val()) + 1);
+            }
+        },
+        //Записываем информацию о положении watermark в основной объект с данными (в px)
+        _syncObjectOnPositionChange = function(left, top){
+            UplFileModul.newImg.watermark.posX = left*rate;
+            UplFileModul.newImg.watermark.posY = top*rate;
         }
     return {
         Init: _init 
