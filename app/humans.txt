@@ -2,19 +2,17 @@
 # The humans responsible & technology colophon
 
 # TEAM
-    andrew ivaschenko -- front-end developer -- anivash.com
-    Барсуков Игорь Викторович   -- front-end developer -- maeglif@gmail.com
-    Гайнутдинова Анастасия Григорьевна  -- front-end developer -- asyagai@gmail.com
-    Ефимов Павел -- front-end developer -- flashfair@gmail.com
-    Кузеванов Владислав Геннадьевич -- front-end developer -- your.designer@yandex.ru 
-    Кондаков Павел Александрович   -- front-end developer -- hi@pavelkondakov.ru
+    Иващенко Андрей -- teamlead, javascript, php, git  -- anivash.com
+    Винников Алексей Александрович javascript, html, jade, sass, css  gravityosam@gmail.com
+    Кузеванов Владислав Геннадьевич -- html, jade, sass, css -- your.designer@yandex.ru 
+    Кондаков Павел Александрович   -- javascript -- hi@pavelkondakov.ru
+    
     <name> -- <role> -- <twitter>
 
 # THANKS
     
-    <name>
+    Loftschool - loftschool.com
 
 # TECHNOLOGY COLOPHON
 
-    CSS3, HTML5,
-    Apache Server Configs, jQuery, Modernizr, Normalize.css
+    CSS3, HTML5, jade, sass, gulp, bower, Apache Server Configs, jQuery, Modernizr, Normalize.css, PHPImageWorkshop, jQuery UI, jQuery-file-upload

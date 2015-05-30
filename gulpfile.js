@@ -98,7 +98,7 @@ var path = {
 	},
 	src: {
 		html: './app/*.html',
-		php: './app/**/*.*',
+		php: './app/php/**/*.*',
 		js: './app/js/.js',
 		plugins: './app/plugins/**/*.*',
 		img: './app/img/**/*.*',
@@ -120,7 +120,7 @@ gulp.task('html:build', function () {
 
 gulp.task('php:build', function () {
 	gulp.src(path.src.php)
-		.pipe(gulp.dest(path.build.html));
+		.pipe(gulp.dest(path.build.php));
 });
 
 gulp.task('js:build', function () {

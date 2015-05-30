@@ -938,27 +938,8 @@ html, body {
     border-bottom: none; }
   .nav-item-clone:nth-child(2), .nav-item-clone:nth-child(5), .nav-item-clone:nth-child(8) {
     position: relative; }
-    .nav-item-clone:nth-child(2):after, .nav-item-clone:nth-child(5):after, .nav-item-clone:nth-child(8):after {
-      display: block;
-      content: '';
-      margin: 0 auto;
-      width: 10%;
-      height: 100%;
-      background-color: #f97e76; }
   .nav-item-clone:nth-child(4), .nav-item-clone:nth-child(5), .nav-item-clone:nth-child(6) {
     position: relative; }
-    .nav-item-clone:nth-child(4):before, .nav-item-clone:nth-child(5):before, .nav-item-clone:nth-child(6):before {
-      position: absolute;
-      display: block;
-      content: '';
-      margin: auto;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 50%;
-      background-color: #f97e76; }
 
 .numb-field {
   width: 101px;
