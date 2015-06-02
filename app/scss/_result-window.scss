@@ -54,16 +54,20 @@
         position: absolute;
         top: 0;
         left: 0;
+        //width:100%;
+        
+
 
         .watermark__row{
           display: inline-block;
-          width: 100%;
+          width: 200%;
+          margin-top: -5px;  
 
           .watermark{
             display: inline-block;
             float: left;
             vertical-align: top;
-            margin: 0;
+            margin: 0;   
           }
         }
       }

@@ -5,15 +5,31 @@
             // Подключаем прослушку событий
             function _setUpListners(){
                 $('.pos-trigger').on('click', _setTile);
-                
 
             }
 
             function _setTile(e, ui) {
 
                 var target = e.target,
-                    trigger = $('.trigger-btn');
-                   
+                    trigger = $('.trigger-btn'),
+                    tileOn = $('#tileon'),
+                    tileOff = $('#single'),
+                    source = $('.source__img'),
+                    watermark = $('.watermark'),
+                    singlemark =  $('.watermark'),
+                    xIter = 1,
+                    yIter = 1;
+              
+
+                    UplFileModul.getImgSize();
+                    var data = UplFileModul.newImg,
+                        backHeight = data['background']['height'],
+                        waterHeight = data['watermark']['height'],
+                        backWidth = data['background']['width'],
+                        waterWidth = data['watermark']['width'];
+
+
+                 $('.nav-field').children().removeClass('parent');
                 trigger.each(function( index ) {
                     if ($(this).hasClass('active')) {
                         $(this).removeClass('active');
@@ -21,6 +37,45 @@
                 }); 
 
                 $(target).addClass('active');
+
+                if ($(tileOn).hasClass('active')) {
+                		xIter = Math.round(backWidth / waterWidth);
+						yIter = Math.round(backHeight / waterHeight);
+						console.log(data);
+						console.log(backHeight);
+						console.log(waterHeight);
+						console.log(xIter + ':' + yIter);
+						
+						watermark.remove();
+						 $('.nav-item').removeClass('current');
+						$('#blWtk').css('width','100%');			
+						for( var i = 0; i < yIter; i++) {
+
+							 $('#blWtk').append('<div class="watermark__row line'+ i +'"></div>');
+							
+							 for( var j = 0; j < xIter; j++) {
+							 	watermark.clone().appendTo('.line'+i);
+							 }
+							
+ 							
+						 }
+						 
+						 UplFileModul.newImg.watermark.width = waterWidth;
+						 UplFileModul.newImg.watermark.height = waterHeight;
+						 
+						 $('.tilex').css('display', 'block');
+						 $('.tiley').css('display', 'block');
+						
+                }
+                if ($(tileOff).hasClass('active')) {
+                	$('#blWtk').css({'width':''});
+                	$('#blWtk').empty();
+                	
+                	$('#blWtk').append('<img src="' + data['watermark']['url'] + '" alt="" class="img watermark" style="width:'+ watermark.width()+'px" >');
+
+     				$('.tilex').css('display', 'none');
+					$('.tiley').css('display', 'none');
+                }
                 
             }
 
@@ -86,22 +141,27 @@
                 console.log('click submit form')
                 
                   
-                    //Записываем в основной объект инфрмацию о размерах изображений (в px)
-                    UplFileModul.getImgSize();
+                    
 
                     //перехватываем событие размножения ватермарки
                     if ($(tileOn).hasClass('active')) {
                         UplFileModul.newImg.tile = 'on';
+                        console.log('on');
                     }
 
                     if ($(single).hasClass('active')) {
                         UplFileModul.newImg.tile = 'off';
+                         console.log('off');
+                        
+                        //Записываем в основной объект инфрмацию о размерах изображений (в px)
+                    	UplFileModul.getImgSize();
                     }
 
                     UplFileModul.newImg.event = 'save';//Записываем информацию о кнопке вызвавшей событие 
 
                     var url = 'php/action-save.php',
                         data = UplFileModul.newImg;
+                        console.log(data); 
 
                     if ( data['background']['height'] !== undefined && data['watermark']['height'] !== undefined) {    
                         
@@ -116,6 +176,12 @@
                             
                             clearForm.clear();
                             $('#options').trigger( 'reset' );
+
+                            if ($('#tileon').hasClass('active')) {
+		                        $('#tileon').removeClass('active');
+		                        $('#single').addClass('active');
+		                    }
+
                         })
                                                     
                             
@@ -329,6 +395,9 @@ var WaterMarkDragAndDrop = (function(){
         wtmX = $('#wtmX'),
         wtmY = $('#wtmY'),
         rate = 0,
+        intervalX = 1,
+        intervalY = 1,
+
         _init = function(){
             _setUpListeners();
             _setDefaults();
@@ -390,8 +459,8 @@ var WaterMarkDragAndDrop = (function(){
         },
         _dragEventHandler = function(){
                 watermark.draggable({
-                    containment:watermarkParent,
-                    scroll: false,
+                    // containment:watermarkParent,
+                    // scroll: false,
                     drag: _positionChanged
                 });
         },
@@ -426,13 +495,19 @@ var WaterMarkDragAndDrop = (function(){
             var $this = $(this),
                 positions = $this.data('target-position').split(',');
 
-            $('.nav-item').each(function( index ) {
-                $( this).removeClass('current');
-            });
+            
+            if($('#single').hasClass('active')) {    
+	            $('.nav-item').each(function( index ) {
+	                $( this).removeClass('current');
+	            });
 
-            $this.addClass('current');
-            _positioning(positions[0], positions[1], watermarkParent);
-            _positionChanged();
+	            $this.addClass('current');
+	            _positioning(positions[0], positions[1], watermarkParent);
+	            _positionChanged();
+        	}
+
+
+
         },
         _positioning = function(horizontalAlign, verticalAlign, parent){
             var myHor = horizontalAlign,
@@ -446,21 +521,64 @@ var WaterMarkDragAndDrop = (function(){
             });
         },
         _onArrowClick = function(e){
-            var arrow = $(e.target),
-                isLeftAlign = arrow.parent().hasClass('position-left'),
-                left = wtmX.val(),
-                top = wtmY.val(),
-                leftRelative = parseInt(left * rate),
-                topRelative = parseInt(top * rate);
 
-            if(isLeftAlign === true){
-                _changePositionInputValue(wtmX, arrow);
-            }else{
-                _changePositionInputValue(wtmY, arrow);
-            }
+        	if ($('#tileon').hasClass('active')) {
+        		//добавляем расстояние между вотермарками
+        		var target = $(e.target);
+        			
+        		    
 
-            _setPositionCoords(leftRelative, topRelative);
-            _syncObjectOnPositionChange(leftRelative, topRelative);
+        		if($(target).parent().hasClass('position-top')){
+        			if ($(target).hasClass('position-dec') && intervalX >= 2) {
+        				intervalX =  intervalX - 1;
+        				
+
+        			} else if (intervalX <= 33){
+        				intervalX =  intervalX + 1;
+        				
+        			}
+
+        			$('.tilex').css('height', intervalX +'px');
+        			UplFileModul.newImg.bInt = intervalY;
+        			$('.watermark__row').css('margin-top', intervalX);
+						 
+        		}
+
+        		
+
+        		if($(target).parent().hasClass('position-left')){
+        			if ($(target).hasClass('position-dec') && intervalY >= 2) {
+        					intervalY =  intervalY - 1;
+
+        			}else if (intervalY <= 33) {
+        				intervalY =  intervalY + 1;
+        				
+        			}
+
+        			$('.tiley').css('width', intervalY +'px');
+        			UplFileModul.newImg.lInt = intervalY;
+        			$('.watermark').css('margin-left', intervalY);
+        		}
+        		
+        		
+
+        	}else {
+	            var arrow = $(e.target),
+	                isLeftAlign = arrow.parent().hasClass('position-left'),
+	                left = wtmX.val(),
+	                top = wtmY.val(),
+	                leftRelative = parseInt(left * rate),
+	                topRelative = parseInt(top * rate);
+
+	            if(isLeftAlign === true){
+	                _changePositionInputValue(wtmX, arrow);
+	            }else{
+	                _changePositionInputValue(wtmY, arrow);
+	            }
+
+	            _setPositionCoords(leftRelative, topRelative);
+	            _syncObjectOnPositionChange(leftRelative, topRelative);
+        	}
         },
         _setPositionCoords = function(left, top){
             watermark.css({'left':left+'px' , 'top':top+'px'});
