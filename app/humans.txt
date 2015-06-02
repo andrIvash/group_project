@@ -2,7 +2,7 @@
 # The humans responsible & technology colophon
 
 # TEAM
-    Иващенко Андрей -- teamlead, javascript, php, git  -- anivash.com
+    Иващенко Андрей -- teamlead, html, jade, sass, css, javascript, php, git  -- anivash.com
     Винников Алексей Александрович javascript, html, jade, sass, css  gravityosam@gmail.com
     Кузеванов Владислав Геннадьевич -- html, jade, sass, css -- your.designer@yandex.ru 
     Кондаков Павел Александрович   -- javascript -- hi@pavelkondakov.ru
