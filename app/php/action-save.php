@@ -32,9 +32,9 @@
 		$yCoord = 0;
 		$bottomInt = $_POST['bInt'];
 		$leftInt = $_POST['lInt'];
-		
+		$watermarkLayer->opacity($waterOpacity);
 		while ($xCoord < $backgroundWidth && $yCoord < $backgroundHeight){
-
+			
 			$backgroundLayer->addLayerOnTop($watermarkLayer, $xCoord, $yCoord, 'LT');
 			$xCoord += $watermarkWidth + $leftInt;
 			if ($xCoord >= $backgroundWidth){
